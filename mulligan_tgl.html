@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mulligan's Island – 2026 TGL</title>
+  <style>
+    :root {
+      --teal:#2A9D8F; --teal-dk:#1A6B65;
+      --coral:#E9724C; --coral-dk:#C4552A;
+      --sand:#F7EDD8; --sand-dk:#E8D9BE;
+      --gold:#FFD166; --text:#2C2C2C; --muted:#6B7280;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia, 'Times New Roman', serif; background:var(--sand); color:var(--text); min-height:100vh; }
+    .header { background:linear-gradient(160deg,var(--teal-dk) 0%,var(--teal) 100%); color:white; text-align:center; padding:28px 20px 22px; position:relative; overflow:hidden; }
+    .header::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='25' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E") repeat; }
+    .header-inner { position:relative; z-index:1; }
+    .club-name { font-size:11px; letter-spacing:5px; text-transform:uppercase; color:rgba(255,255,255,0.75); margin-bottom:4px; }
+    .header h1 { font-size:30px; font-weight:bold; color:white; text-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .header-divider { width:60px; height:3px; background:var(--coral); margin:10px auto 0; border-radius:2px; }
+    .container { max-width:680px; margin:0 auto; padding:20px 16px 40px; }
+    .section { background:white; border-radius:12px; margin-bottom:18px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.07); }
+    .section-header { background:var(--teal); color:white; padding:11px 18px; display:flex; align-items:center; gap:10px; }
+    .section-header h2 { font-size:14px; font-weight:bold; letter-spacing:2px; text-transform:uppercase; }
+    .section-body { padding:18px; }
+    table { width:100%; border-collapse:collapse; font-family:Arial,sans-serif; font-size:13px; }
+    th { background:var(--sand); color:var(--teal-dk); font-size:11px; letter-spacing:1px; text-transform:uppercase; padding:8px 12px; text-align:left; border-bottom:2px solid var(--sand-dk); }
+    td { padding:9px 12px; border-bottom:1px solid #F0F0F0; vertical-align:middle; }
+    tr:last-child td { border-bottom:none; }
+    .footer { text-align:center; padding:24px 16px 32px; font-family:Arial,sans-serif; font-size:11px; color:var(--muted); }
+    .footer .club-footer { font-size:13px; font-family:Georgia,serif; font-weight:bold; color:var(--teal); margin-bottom:4px; }
+    .nav-link { display:inline-flex; align-items:center; gap:6px; font-family:Arial,sans-serif; font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; color:var(--teal-dk); text-decoration:none; padding:6px 0; margin-bottom:10px; }
+    .nav-link:hover { color:var(--coral); }
+    .tgl-players-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    .tgl-team-col { border-radius:8px; overflow:hidden; border:1px solid var(--sand-dk); }
+    .tgl-team-label { font-size:10px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; color:white; padding:6px 8px; text-align:center; }
+    .label-tips { background:#1A6B65; }
+    .label-money { background:#6D28D9; }
+    .label-cartel { background:#C4552A; }
+    .label-rice { background:#0369A1; }
+    .tgl-player-name { font-family:Arial,sans-serif; font-size:12px; font-weight:600; padding:7px 8px; border-bottom:1px solid #F3F3F3; text-align:center; background:white; }
+    .tgl-player-name:last-child { border-bottom:none; }
+    .team-dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:8px; vertical-align:middle; }
+    .player-name-cell { font-weight:600; }
+    .player-name-cell.inactive { color:var(--muted); font-weight:normal; }
+    .pts-earned.has-pts { font-weight:bold; color:#1A6B65; }
+    .pts-earned.no-pts { color:var(--muted); }
+    .matches-cell { color:var(--muted); }
+    details.section > summary { cursor:pointer; list-style:none; }
+    details.section > summary::-webkit-details-marker { display:none; }
+    details.section > summary::marker { display:none; }
+    .expand-chevron { margin-left:auto; font-size:18px; line-height:1; transition:transform 0.2s ease; display:inline-block; }
+    details.section[open] .expand-chevron { transform:rotate(90deg); }
+    @media(max-width:500px) { .tgl-players-grid { grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:420px) { .header h1 { font-size:24px; } }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <div class="club-name">Mulligan's Island Golf Club</div>
+      <h1>2026 TGL</h1>
+      <div class="header-divider"></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <a class="nav-link" href="index.html">&#8249;&nbsp; 2026 Season Overview</a>
+
+    <details class="section">
+      <summary class="section-header"><span class="icon">&#127933;</span><h2>February 2026 TGL Players</h2><span class="expand-chevron">&#8250;</span></summary>
+      <div class="section-body">
+        <div class="tgl-players-grid">
+          <div class="tgl-team-col"><div class="tgl-team-label label-tips">Just the<br>Tips</div><div class="tgl-player-name">Kevin Vargas</div><div class="tgl-player-name">Colin Harrison</div></div>
+          <div class="tgl-team-col"><div class="tgl-team-label label-money">The Money<br>Team</div><div class="tgl-player-name">John Nothdurft</div><div class="tgl-player-name">AB Hernandez</div></div>
+          <div class="tgl-team-col"><div class="tgl-team-label label-cartel">19th Hole<br>Cartel</div><div class="tgl-player-name">Kevin Taylor</div><div class="tgl-player-name">Taylor Yates</div></div>
+          <div class="tgl-team-col"><div class="tgl-team-label label-rice">White<br>Rice</div><div class="tgl-player-name">Tai Ho</div><div class="tgl-player-name">Max O'Brien</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="section">
+      <summary class="section-header"><span class="icon">&#127933;</span><h2>March 2026 TGL Players</h2><span class="expand-chevron">&#8250;</span></summary>
+      <div class="section-body">
+        <div class="tgl-players-grid">
+          <div class="tgl-team-col"><div class="tgl-team-label label-tips">Just the<br>Tips</div><div class="tgl-player-name">Tam Tran</div><div class="tgl-player-name">Chris Chang</div></div>
+          <div class="tgl-team-col"><div class="tgl-team-label label-money">The Money<br>Team</div><div class="tgl-player-name">Carlos Bouloy</div><div class="tgl-player-name">Mikel Hodges</div></div>
+          <div class="tgl-team-col"><div class="tgl-team-label label-cartel">19th Hole<br>Cartel</div><div class="tgl-player-name">Daniel Lopez</div><div class="tgl-player-name">Spencer Higgins</div></div>
+          <div class="tgl-team-col"><div class="tgl-team-label label-rice">White<br>Rice</div><div class="tgl-player-name">Andy Pendleton</div><div class="tgl-player-name">David Wu</div></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="section">
+      <summary class="section-header"><span class="icon">&#127933;</span><h2>April 2026 TGL Players</h2><span class="expand-chevron">&#8250;</span></summary>
+      <div class="section-body">
+        <div class="tgl-players-grid">
+          <div class="tgl-team-col"><div class="tgl-team-label label-tips">Just the<br>Tips</div><div class="tgl-player-name">JP Hill</div><div class="tgl-player-name">Paul Toledo</div></div>
+          <div class="tgl-team-col"><div class="tgl-team-label label-money">The Money<br>Team</div><div class="tgl-player-name">Mikel Hodges</div><div class="tgl-player-name">John Nothdurft</div></div>
+          <div class="tgl-team-col"><div class="tgl-team-label label-cartel">19th Hole<br>Cartel</div><div class="tgl-player-name">Kevin Taylor</div><div class="tgl-player-name">Mike Paguyo</div></div>
+          <div class="tgl-team-col"><div class="tgl-team-label label-rice">White<br>Rice</div><div class="tgl-player-name">Tom Shea</div><div class="tgl-player-name">Colin Chang</div></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="section">
+      <div class="section-header"><span class="icon">&#127942;</span><h2>2026 TGL Standings</h2></div>
+      <div class="section-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Team</th><th style="text-align:center;width:22%;">Total Points</th><th style="text-align:center;width:22%;">Points Back</th></tr></thead>
+          <tbody>
+            <tr style='background:#FFFBEE;'><td><span class="team-dot" style="background:#2A9D8F;"></span><strong>Just the Tips</strong></td><td style="text-align:center;font-weight:bold;color:#1A6B65;">70.0</td><td style="text-align:center;">—</td></tr>
+            <tr><td><span class="team-dot" style="background:#E9724C;"></span><strong>19th Hole Cartel</strong></td><td style="text-align:center;font-weight:bold;color:#1A6B65;">56.5</td><td style="text-align:center;">-13.5</td></tr>
+            <tr><td><span class="team-dot" style="background:#8B5CF6;"></span><strong>The Money Team</strong></td><td style="text-align:center;font-weight:bold;color:#1A6B65;">50.5</td><td style="text-align:center;">-19.5</td></tr>
+            <tr><td><span class="team-dot" style="background:#0EA5E9;"></span><strong>White Rice</strong></td><td style="text-align:center;font-weight:bold;color:#1A6B65;">29.5</td><td style="text-align:center;">-40.5</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" style="background:#1A6B65;"><span class="icon">&#9971;</span><h2>Just the Tips</h2></div>
+      <div class="section-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Player</th><th style="text-align:center;width:22%;">Matches Played</th><th style="text-align:center;width:22%;">Points Earned</th></tr></thead>
+          <tbody>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #1A6B65">Paul Toledo</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">18</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #1A6B65">Kevin Vargas</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">12</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #1A6B65">Chris Chang</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">11</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #1A6B65">Colin Harrison</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">10</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #1A6B65">Tam Tran</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">10</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #1A6B65">JP Hill</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">9</td></tr>
+            <tr><td class="player-name-cell inactive">Bryan Cappelli</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+            <tr><td class="player-name-cell inactive">Paul Hsieh</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" style="background:#C4552A;"><span class="icon">&#127866;</span><h2>19th Hole Cartel</h2></div>
+      <div class="section-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Player</th><th style="text-align:center;width:22%;">Matches Played</th><th style="text-align:center;width:22%;">Points Earned</th></tr></thead>
+          <tbody>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #C4552A">Kevin Taylor</td><td class="matches-cell" style="text-align:center;">2</td><td class="pts-earned has-pts" style="text-align:center;">25</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #C4552A">Spencer Higgins</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">10</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #C4552A">Mike Paguyo</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">8.5</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #C4552A">Taylor Yates</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">7.5</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #C4552A">Daniel Lopez</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">5.5</td></tr>
+            <tr><td class="player-name-cell inactive">Jorge Rayo</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+            <tr><td class="player-name-cell inactive">Juan Ramirez</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+            <tr><td class="player-name-cell inactive">Nick Harris</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" style="background:#6D28D9;"><span class="icon">&#128176;</span><h2>The Money Team</h2></div>
+      <div class="section-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Player</th><th style="text-align:center;width:22%;">Matches Played</th><th style="text-align:center;width:22%;">Points Earned</th></tr></thead>
+          <tbody>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #6D28D9">John Nothdurft</td><td class="matches-cell" style="text-align:center;">2</td><td class="pts-earned has-pts" style="text-align:center;">17</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #6D28D9">Carlos Bouloy</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">13.5</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #6D28D9">Mikel Hodges</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">11.5</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #6D28D9">Art Hernandez</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">5.5</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #6D28D9">Danny Marin</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">3</td></tr>
+            <tr><td class="player-name-cell inactive">Darrick Sogabe</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+            <tr><td class="player-name-cell inactive">Ken Sogabe</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+            <tr><td class="player-name-cell inactive">Mark Horgan</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header" style="background:#0369A1;"><span class="icon">&#127859;</span><h2>White Rice</h2></div>
+      <div class="section-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Player</th><th style="text-align:center;width:22%;">Matches Played</th><th style="text-align:center;width:22%;">Points Earned</th></tr></thead>
+          <tbody>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #0369A1">Tom Shea</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">11</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #0369A1">Colin Chang</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">7.5</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #0369A1">Tai Ho</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">4</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #0369A1">Andy Pendleton</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">3</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #0369A1">David Wu</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">2</td></tr>
+            <tr class='active-player'><td class="player-name-cell" style="border-left:3px solid #0369A1">Max O'Brien</td><td class="matches-cell" style="text-align:center;">1</td><td class="pts-earned has-pts" style="text-align:center;">2</td></tr>
+            <tr><td class="player-name-cell inactive">Sarith Kim</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+            <tr><td class="player-name-cell inactive">Will Vuong</td><td class="matches-cell" style="text-align:center;">0</td><td class="pts-earned no-pts" style="text-align:center;">0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="club-footer">Mulligan's Island Golf Club</div>
+    <div>Southern California &nbsp;·&nbsp; Est. 2021</div>
+    <div style="margin-top:8px;">Questions? Give someone else a hard time about it.</div>
+  </div>
+</body>
+</html>

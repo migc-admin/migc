@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mulligan's Island – 2026 Season</title>
+  <style>
+    :root {
+      --teal:#2A9D8F; --teal-dk:#1A6B65;
+      --coral:#E9724C; --coral-dk:#C4552A;
+      --sand:#F7EDD8; --sand-dk:#E8D9BE;
+      --gold:#FFD166; --text:#2C2C2C; --muted:#6B7280;
+    }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:Georgia, 'Times New Roman', serif; background:var(--sand); color:var(--text); min-height:100vh; }
+    .header { background:linear-gradient(160deg,var(--teal-dk) 0%,var(--teal) 100%); color:white; text-align:center; padding:28px 20px 22px; position:relative; overflow:hidden; }
+    .header::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='25' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1'/%3E%3C/svg%3E") repeat; }
+    .header-inner { position:relative; z-index:1; }
+    .header h1 { font-size:30px; font-weight:bold; color:white; text-shadow:0 2px 8px rgba(0,0,0,0.25); }
+    .header-divider { width:60px; height:3px; background:var(--coral); margin:10px auto 0; border-radius:2px; }
+    .tourn-sub { font-size:15px; color:var(--gold); margin-top:6px; }
+    .container { max-width:680px; margin:0 auto; padding:20px 16px 40px; }
+    .section { background:white; border-radius:12px; margin-bottom:18px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.07); }
+    .section-header { background:var(--teal); color:white; padding:11px 18px; display:flex; align-items:center; gap:10px; }
+    .section-header h2 { font-size:14px; font-weight:bold; letter-spacing:2px; text-transform:uppercase; }
+    .section-body { padding:18px; }
+    table { width:100%; border-collapse:collapse; font-family:Arial,sans-serif; font-size:13px; }
+    th { background:var(--sand); color:var(--teal-dk); font-size:11px; letter-spacing:1px; text-transform:uppercase; padding:8px 12px; text-align:left; border-bottom:2px solid var(--sand-dk); }
+    td { padding:9px 12px; border-bottom:1px solid #F0F0F0; vertical-align:middle; }
+    tr:last-child td { border-bottom:none; }
+    .footer { text-align:center; padding:24px 16px 32px; font-family:Arial,sans-serif; font-size:11px; color:var(--muted); }
+    .footer .club-footer { font-size:13px; font-family:Georgia,serif; font-weight:bold; color:var(--teal); margin-bottom:4px; }
+    .nav-link { display:inline-flex; align-items:center; gap:6px; font-family:Arial,sans-serif; font-size:12px; font-weight:bold; letter-spacing:1.5px; text-transform:uppercase; color:var(--teal-dk); text-decoration:none; padding:6px 0; margin-bottom:10px; }
+    .nav-link:hover { color:var(--coral); }
+    a { text-decoration:none; color:inherit; }
+    a:hover { color:var(--coral); }
+    @media(max-width:420px) { .header h1 { font-size:24px; } }
+    .tgl-btn {
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      background:linear-gradient(135deg,var(--teal-dk) 0%,var(--teal) 100%);
+      color:white; text-decoration:none; border-radius:12px; padding:13px 20px;
+      margin-bottom:18px; box-shadow:0 4px 14px rgba(26,107,101,0.35); font-family:Georgia,serif;
+    }
+    .tgl-btn:active { transform:scale(0.98); }
+    .tgl-btn-icon { font-size:20px; }
+    .tgl-btn-text { font-size:15px; font-weight:bold; letter-spacing:2px; text-transform:uppercase; flex:1; text-align:left; }
+    .tgl-btn-arrow { font-size:22px; }
+    .current-event td { background:#FFF8EE; }
+    .event-badge { display:inline-block; background:var(--coral); color:white; font-size:9px; font-weight:bold; letter-spacing:1px; text-transform:uppercase; padding:2px 6px; border-radius:4px; margin-left:6px; vertical-align:middle; }
+    .date-cell { color:var(--muted); font-size:12px; white-space:nowrap; }
+    .winners-table { table-layout:fixed; }
+    .winners-table th, .winners-table td { vertical-align:middle; }
+    .winners-table th.col-month, .winners-table td.col-month { width:28%; text-align:left; }
+    .winners-table th.col-flight-a, .winners-table td.col-flight-a { width:36%; text-align:center; }
+    .winners-table th.col-flight-b, .winners-table td.col-flight-b { width:36%; text-align:center; border-left:1px solid var(--sand-dk); }
+    .month-cell { font-weight:bold; color:var(--teal-dk); white-space:nowrap; }
+    .flight-winner-cell { line-height:1.55; }
+    .winner-names { font-weight:600; }
+    th:last-child, td:last-child { text-align:right; }
+    .money-leader { background:#FFFBEE; }
+    .rank-num { display:inline-flex; width:24px; height:24px; align-items:center; justify-content:center; border-radius:50%; font-size:12px; font-weight:bold; background:var(--sand); color:var(--muted); margin-right:6px; }
+    .rank-1 { background:var(--gold); color:#7A5C00; }
+    .rank-2 { background:#E0E0E0; color:#555; }
+    .rank-3 { background:#E8C9A0; color:#6B4C20; }
+    .money-amount { color:var(--teal-dk); font-weight:bold; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-inner">
+      <h1>Mulligan's Island Golf Club</h1>
+      <div class="header-divider"></div>
+      <div class="tourn-sub">2026 Season</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <a class="nav-link" href="vineyard.html">Current Tournament &nbsp;&#8250;</a>
+
+    <a class="tgl-btn" href="mulligan_tgl.html">
+      <span class="tgl-btn-icon">&#9971;</span>
+      <span class="tgl-btn-text">2026 TGL</span>
+      <span class="tgl-btn-arrow">&#8250;</span>
+    </a>
+
+    <div class="section">
+      <div class="section-header"><span class="icon">&#128197;</span><h2>2026 Schedule</h2></div>
+      <div class="section-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Date</th><th>Course</th></tr></thead>
+          <tbody>
+            <tr><td><span class="date-cell">May 17</span></td><td><a href="links-at-the-lakehouse.html"><strong>The Links at Lakehouse</strong></a></td></tr>
+            <tr><td><span class="date-cell">Jun 28</span></td><td><a href="native-oaks.html"><strong>Native Oaks</strong></a></td></tr>
+            <tr><td><span class="date-cell">Jul 12</span></td><td><a href="coronado.html"><strong>Coronado GC</strong></a></td></tr>
+            <tr><td><span class="date-cell">Aug 2</span></td><td><a href="ccrb-august.html"><strong>The Country Club of Rancho Bernardo</strong></a></td></tr>
+            <tr><td><span class="date-cell">Aug 30</span></td><td><a href="san-vicente.html"><strong>San Vicente Golf Club</strong></a></td></tr>
+            <tr><td><span class="date-cell">Sep 20</span></td><td><a href="arrowood.html"><strong>Arrowood Golf Club</strong></a></td></tr>
+            <tr><td><span class="date-cell">Oct 25</span></td><td><a href="golf-club-of-california.html"><strong>Golf Club of California</strong></a></td></tr>
+            <tr><td><span class="date-cell">Nov 15</span></td><td><a href="twin-oaks.html"><strong>Twin Oaks</strong></a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><span class="icon">&#127942;</span><h2>Monthly Winners</h2></div>
+      <div class="section-body" style="padding:0;">
+        <table class="winners-table">
+          <thead>
+            <tr>
+              <th class="col-month">Month</th>
+              <th class="col-flight-a">Flight A</th>
+              <th class="col-flight-b">Flight B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="month-cell col-month"><a href="ccrb-january.html">January 2026</a></td>
+              <td class="flight-winner-cell col-flight-a"><span class="winner-names">Taylor Yates</span><br><span class="winner-names">Tai Ho</span></td>
+              <td class="flight-winner-cell col-flight-b"><span class="winner-names">Max O'Brien</span></td>
+            </tr>
+            <tr>
+              <td class="month-cell col-month"><a href="cross-creek.html">February 2026</a></td>
+              <td class="flight-winner-cell col-flight-a"><span class="winner-names">Kevin Vargas</span></td>
+              <td class="flight-winner-cell col-flight-b"><span class="winner-names">Paul Hsieh</span></td>
+            </tr>
+            <tr>
+              <td class="month-cell col-month"><a href="willow-glen.html">March 2026</a></td>
+              <td class="flight-winner-cell col-flight-a"><span class="winner-names">Carlos Bouloy</span><br><span class="winner-names">Colin Chang</span></td>
+              <td class="flight-winner-cell col-flight-b"><span class="winner-names">Mike Paguyo</span></td>
+            </tr>
+            <tr>
+              <td class="month-cell col-month"><a href="vineyard.html">April 2026</a></td>
+              <td class="flight-winner-cell col-flight-a"><span class="winner-names">Paul Toledo</span></td>
+              <td class="flight-winner-cell col-flight-b"><span class="winner-names">Daniel Lopez</span><br><span class="winner-names">Kevin Taylor</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header"><span class="icon">&#128176;</span><h2>DHL Money List – Top 10</h2></div>
+      <div class="section-body" style="padding:0;">
+        <table>
+          <thead><tr><th>Player</th><th>Winnings</th></tr></thead>
+          <tbody>
+            <tr class='money-leader'><td><span class="rank-num rank-1">1</span><strong>Tai Ho</strong></td><td class="money-amount">$288.00</td></tr>
+            <tr><td><span class="rank-num rank-2">2</span><strong>Mikel Hodges</strong></td><td class="money-amount">$256.00</td></tr>
+            <tr><td><span class="rank-num rank-3">3</span><strong>Kevin Vargas</strong></td><td class="money-amount">$228.00</td></tr>
+            <tr><td><span class="rank-num">4</span>Max O'Brien</td><td class="money-amount">$199.50</td></tr>
+            <tr><td><span class="rank-num">5</span>Daniel Lopez</td><td class="money-amount">$187.00</td></tr>
+            <tr><td><span class="rank-num">6</span>Paul Toledo</td><td class="money-amount">$173.00</td></tr>
+            <tr><td><span class="rank-num">7</span>Mike Paguyo</td><td class="money-amount">$160.66</td></tr>
+            <tr><td><span class="rank-num">8</span>Paul Hsieh</td><td class="money-amount">$157.66</td></tr>
+            <tr><td><span class="rank-num">9</span>Taylor Yates</td><td class="money-amount">$156.00</td></tr>
+            <tr><td><span class="rank-num">10</span>Kevin Taylor</td><td class="money-amount">$129.50</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="club-footer">Mulligan's Island Golf Club</div>
+    <div>Southern California &nbsp;·&nbsp; Est. 2021</div>
+    <div style="margin-top:8px;">Questions? Give someone else a hard time about it.</div>
+  </div>
+</body>
+</html>
