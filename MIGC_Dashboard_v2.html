@@ -4,38 +4,41 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MIGC 2026 Season Dashboard</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --augusta:#1B4332;--fairway:#2D6A4F;--gold:#D4AF37;--gold-pale:#F7EAB5;
   --off-white:#F8F9FA;--charcoal:#212529;--silver:#C0C0C0;--silver-pale:#E8E8E8;
-  --bronze:#CD7F32;--bronze-pale:#E8C49A;--muted:#6c757d;--border:#dee2e6;
-  --bg:#EEF1EC;
+  --bronze:#CD7F32;--bronze-pale:#E8C49A;--muted:#6c757d;--border:#dee2e6;--bg:#EEF1EC;
 }
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal);}
 
-/* ── HEADER ── */
+/* HEADER */
 .hdr{background:linear-gradient(150deg,#0b2318 0%,#1B4332 45%,#1f5c3e 100%);border-bottom:3px solid var(--gold);}
 .hdr-top{padding:26px 40px 18px;display:flex;align-items:center;justify-content:space-between;}
 .hdr-title .badge{display:inline-block;background:var(--gold);color:var(--augusta);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.13em;padding:3px 10px;border-radius:2px;margin-bottom:8px;}
 .hdr-title h1{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:#fff;letter-spacing:.01em;}
 .hdr-emblem{font-size:3.2rem;opacity:.2;}
-.hdr-stats{background:rgba(0,0,0,.22);border-top:1px solid rgba(255,255,255,.1);padding:13px 40px;display:flex;gap:0;}
+.hdr-stats{background:rgba(0,0,0,.22);border-top:1px solid rgba(255,255,255,.1);padding:13px 40px;display:flex;gap:0;max-width:520px;}
 .hdr-stat{flex:1;padding-right:24px;margin-right:24px;border-right:1px solid rgba(255,255,255,.13);}
 .hdr-stat:last-child{border-right:none;margin-right:0;padding-right:0;}
 .hdr-stat .lbl{font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:3px;}
 .hdr-stat .val{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--gold);}
 
-/* ── LAYOUT ── */
+/* LAYOUT */
 .main{max-width:1380px;margin:0 auto;padding:30px 22px;}
 .sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
 .sec-hdr h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--augusta);white-space:nowrap;}
 .sec-hdr .line{flex:1;height:1px;background:linear-gradient(to right,var(--gold),transparent);}
 .mb{margin-bottom:34px;}
+.mb-sm{margin-bottom:16px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.four-col{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
 
-/* ── KPI CARDS ── */
-.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+/* KPI */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
 .kpi-card{background:#fff;border-radius:8px;padding:18px 18px 16px;border-top:3px solid var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;position:relative;}
 .kpi-card::before{content:'';position:absolute;bottom:-16px;right:-16px;width:70px;height:70px;background:var(--gold);opacity:.06;border-radius:50%;}
 .kpi-card .icon{font-size:1.4rem;margin-bottom:9px;}
@@ -43,22 +46,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal)
 .kpi-card .kname{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--augusta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .kpi-card .kval{font-size:.82rem;color:var(--fairway);font-weight:500;margin-top:2px;}
 
-/* ── TABLE CARDS ── */
+/* TABLE CARDS */
 .tcard{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.07);overflow:hidden;}
-.tcard-hdr{background:var(--augusta);color:#fff;padding:13px 18px;display:flex;align-items:center;justify-content:space-between;}
-.tcard-hdr h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;}
-.fbadge{background:var(--gold);color:var(--augusta);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:2px;}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.tcard-hdr{background:var(--augusta);color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;}
+.tcard-hdr h3{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:600;}
+.fbadge{background:var(--gold);color:var(--augusta);font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 9px;border-radius:2px;}
+.fbadge.b-b{background:#7EB8A4;color:#0b2318;}
 .tbl-wrap{overflow-x:auto;}
+
+/* TABLES */
 table{width:100%;border-collapse:collapse;font-size:.855rem;}
 thead th{background:var(--fairway);color:#fff;padding:9px 13px;text-align:left;font-size:.69rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;white-space:nowrap;}
+thead th.sortable{cursor:pointer;user-select:none;}
+thead th.sortable:hover{background:#255c43;}
+.sort-icon{display:inline-block;margin-left:5px;opacity:.5;font-size:.65rem;}
+thead th.sort-asc .sort-icon,thead th.sort-desc .sort-icon{opacity:1;}
 th.tc,td.tc{text-align:center;}
+th.tr,td.tr{text-align:right;}
 tbody tr{border-bottom:1px solid var(--border);}
 tbody tr:last-child{border-bottom:none;}
 tbody td{padding:9px 13px;white-space:nowrap;}
 tbody tr:hover{filter:brightness(.97);}
 
-/* placement rows */
+/* ROW COLORS */
 .r1{background:var(--gold-pale)!important;}
 .r2{background:var(--silver-pale)!important;}
 .r3{background:var(--bronze-pale)!important;}
@@ -78,23 +88,23 @@ tbody tr:hover{filter:brightness(.97);}
 .p3{background:var(--bronze);color:#fff;}
 .pw{background:var(--fairway);color:#fff;}
 
-.amt{font-weight:600;color:var(--fairway);}
-.empty td{text-align:center;color:var(--muted);padding:22px;font-style:italic;}
-.gtag{display:inline-block;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);border:1px solid #bbb;border-radius:3px;padding:0 4px;margin-left:4px;vertical-align:middle;}
+.tied-names{font-size:.71rem;color:var(--muted);display:block;margin-top:2px;font-weight:400;white-space:normal;line-height:1.4;}
 
-/* ── FILTERS ── */
-.fbar{padding:12px 18px;background:#f5f6f4;border-bottom:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.amt{font-weight:600;color:var(--fairway);}
+.empty td{text-align:center;color:var(--muted);padding:20px;font-style:italic;font-size:.82rem;}
+.gtag{display:inline-block;font-size:.58rem;font-weight:700;text-transform:uppercase;color:var(--muted);border:1px solid #bbb;border-radius:3px;padding:0 4px;margin-left:4px;vertical-align:middle;}
+
+/* FILTERS */
+.fbar{padding:12px 16px;background:#f5f6f4;border-bottom:1px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
 .fbar label{font-size:.69rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
 .fbar select{padding:5px 9px;border:1px solid #ced4da;border-radius:4px;font-size:.8rem;font-family:'DM Sans',sans-serif;color:var(--charcoal);background:#fff;cursor:pointer;}
 .fbar select:focus{outline:none;border-color:var(--fairway);}
+.fbar-standalone{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.07);margin-bottom:16px;border:1px solid var(--border);}
 
-/* ── SPECIALTY ── */
-.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.spec-card{background:#fff;border-radius:8px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;align-items:center;gap:14px;}
-.spec-icon{font-size:1.7rem;flex-shrink:0;}
-.spec-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:3px;}
-.spec-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--augusta);}
-.spec-sub{font-size:.78rem;color:var(--fairway);}
+/* ACHIEVEMENT GROUP HEADERS */
+.ach-group{margin-bottom:20px;}
+.ach-group-label{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--augusta);padding:10px 0 8px;border-bottom:1px solid var(--border);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.ach-group-label::before{content:'';display:block;width:3px;height:16px;background:var(--gold);border-radius:2px;}
 
 footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border-top:1px solid var(--border);margin-top:8px;}
 </style>
@@ -105,15 +115,13 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
 <header class="hdr">
   <div class="hdr-top">
     <div class="hdr-title">
-      <div class="badge">⛳ 2026 Season</div>
+      <div class="badge">&#9971; 2026 Season</div>
       <h1>MIGC Season Dashboard</h1>
     </div>
-    <div class="hdr-emblem">🏌️</div>
+    <div class="hdr-emblem">&#127948;</div>
   </div>
   <div class="hdr-stats">
-    <div class="hdr-stat"><div class="lbl">Total Purse</div><div class="val" id="h-purse">—</div></div>
-    <div class="hdr-stat"><div class="lbl">Money Leader</div><div class="val" id="h-leader">—</div></div>
-    <div class="hdr-stat"><div class="lbl">Most Wins</div><div class="val" id="h-wins">—</div></div>
+    <div class="hdr-stat"><div class="lbl">Tournaments Completed</div><div class="val" id="h-played">—</div></div>
     <div class="hdr-stat"><div class="lbl">Next Tournament</div><div class="val" id="h-next">—</div></div>
   </div>
 </header>
@@ -122,89 +130,172 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
 
   <!-- KPI -->
   <section class="mb">
-    <div class="sec-hdr"><span>📊</span><h2>Season KPIs</h2><div class="line"></div></div>
+    <div class="sec-hdr"><span>&#128202;</span><h2>Season KPIs</h2><div class="line"></div></div>
     <div class="kpi-grid" id="kpi-grid"></div>
   </section>
 
   <!-- FLIGHT LEADERBOARDS -->
   <section class="mb">
-    <div class="sec-hdr"><span>🏆</span><h2>Flight Leaderboards</h2><div class="line"></div></div>
+    <div class="sec-hdr"><span>&#127942;</span><h2>Flight Leaderboards</h2><div class="line"></div></div>
     <div class="two-col">
       <div class="tcard">
-        <div class="tcard-hdr"><h3>Flight A — Overall Standings</h3><span class="fbadge">Flight A</span></div>
-        <div class="tbl-wrap"><table><thead><tr><th>Rank</th><th>Player</th><th class="tc">1st</th><th class="tc">2nd</th><th class="tc">3rd</th><th>Earnings</th></tr></thead><tbody id="lb-a"></tbody></table></div>
+        <div class="tcard-hdr"><h3>Flight A &#8212; Overall Standings</h3><span class="fbadge">Flight A</span></div>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Rank</th><th>Player</th><th class="tc">1st</th><th class="tc">2nd</th><th class="tc">3rd</th></tr></thead>
+          <tbody id="lb-a"></tbody>
+        </table></div>
       </div>
       <div class="tcard">
-        <div class="tcard-hdr"><h3>Flight B — Overall Standings</h3><span class="fbadge">Flight B</span></div>
-        <div class="tbl-wrap"><table><thead><tr><th>Rank</th><th>Player</th><th class="tc">1st</th><th class="tc">2nd</th><th class="tc">3rd</th><th>Earnings</th></tr></thead><tbody id="lb-b"></tbody></table></div>
+        <div class="tcard-hdr"><h3>Flight B &#8212; Overall Standings</h3><span class="fbadge b-b">Flight B</span></div>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Rank</th><th>Player</th><th class="tc">1st</th><th class="tc">2nd</th><th class="tc">3rd</th></tr></thead>
+          <tbody id="lb-b"></tbody>
+        </table></div>
       </div>
     </div>
-  </section>
-
-  <!-- SPECIALTY -->
-  <section class="mb">
-    <div class="sec-hdr"><span>⭐</span><h2>Specialty Leaders</h2><div class="line"></div></div>
-    <div class="spec-grid" id="spec-grid"></div>
   </section>
 
   <!-- MONEY LIST -->
   <section class="mb">
-    <div class="sec-hdr"><span>💰</span><h2>Top 20 Money List</h2><div class="line"></div></div>
+    <div class="sec-hdr"><span>&#128176;</span><h2>Top 20 Money List</h2><div class="line"></div></div>
     <div class="tcard">
-      <div class="tcard-hdr"><h3>Season Earnings — Achievements + Skins</h3></div>
-      <div class="tbl-wrap"><table><thead><tr><th>Rank</th><th>Player</th><th>Achievements</th><th>Skins</th><th>Total Earnings</th></tr></thead><tbody id="money-body"></tbody></table></div>
+      <div class="tcard-hdr"><h3>Season Earnings &#8212; Tournament Achievements</h3></div>
+      <div class="tbl-wrap"><table id="tbl-money">
+        <thead><tr>
+          <th>Rank</th>
+          <th class="sortable" data-table="money" data-key="player" data-type="str">Player <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tr" data-table="money" data-key="total" data-type="num">Total Earnings <span class="sort-icon">&#8645;</span></th>
+        </tr></thead>
+        <tbody id="money-body"></tbody>
+      </table></div>
     </div>
   </section>
 
-  <!-- ACHIEVEMENTS -->
+  <!-- TOURNAMENT ACHIEVEMENTS -->
   <section class="mb">
-    <div class="sec-hdr"><span>🎖️</span><h2>Tournament Achievements</h2><div class="line"></div></div>
-    <div class="tcard">
+    <div class="sec-hdr"><span>&#127894;</span><h2>Tournament Achievements</h2><div class="line"></div></div>
+    <div class="tcard fbar-standalone">
       <div class="fbar">
-        <label>Tournament</label><select id="af-t" onchange="renderAch()"><option value="">All</option></select>
-        <label>Player</label><select id="af-p" onchange="renderAch()"><option value="">All</option></select>
-        <label>Category</label><select id="af-c" onchange="renderAch()"><option value="">All</option></select>
+        <label>Tournament</label><select id="ach-t" onchange="renderAllAch()"></select>
+        <label>Player</label><select id="ach-p" onchange="renderAllAch()"><option value="">All Players</option></select>
       </div>
-      <div class="tbl-wrap"><table><thead><tr><th>Tournament</th><th>Player</th><th>Category</th><th class="tc">Placement</th><th>Amount</th></tr></thead><tbody id="ach-body"></tbody></table></div>
+    </div>
+
+    <div class="ach-group">
+      <div class="ach-group-label">Overall Finishes</div>
+      <div class="two-col mb-sm">
+        <div class="tcard">
+          <div class="tcard-hdr"><h3>Flight A &#8212; Overall</h3><span class="fbadge">Flight A</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th class="tc">Placement</th><th>Player</th><th class="tr">Amount</th></tr></thead><tbody id="ac-aov"></tbody></table></div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-hdr"><h3>Flight B &#8212; Overall</h3><span class="fbadge b-b">Flight B</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th class="tc">Placement</th><th>Player</th><th class="tr">Amount</th></tr></thead><tbody id="ac-bov"></tbody></table></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ach-group">
+      <div class="ach-group-label">Nine Hole Results</div>
+      <div class="four-col mb-sm">
+        <div class="tcard">
+          <div class="tcard-hdr"><h3>Front 9 &#8212; Flight A</h3><span class="fbadge">A</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th class="tc">Place</th><th>Player</th><th class="tr">Amt</th></tr></thead><tbody id="ac-af9"></tbody></table></div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-hdr"><h3>Front 9 &#8212; Flight B</h3><span class="fbadge b-b">B</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th class="tc">Place</th><th>Player</th><th class="tr">Amt</th></tr></thead><tbody id="ac-bf9"></tbody></table></div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-hdr"><h3>Back 9 &#8212; Flight A</h3><span class="fbadge">A</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th class="tc">Place</th><th>Player</th><th class="tr">Amt</th></tr></thead><tbody id="ac-ab9"></tbody></table></div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-hdr"><h3>Back 9 &#8212; Flight B</h3><span class="fbadge b-b">B</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th class="tc">Place</th><th>Player</th><th class="tr">Amt</th></tr></thead><tbody id="ac-bb9"></tbody></table></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ach-group">
+      <div class="ach-group-label">Specialty Awards</div>
+      <div class="three-col mb-sm">
+        <div class="tcard">
+          <div class="tcard-hdr"><h3>Long Drive &#8212; Flight A</h3><span class="fbadge">A</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th class="tc">Award</th><th>Player</th><th class="tr">Amt</th></tr></thead><tbody id="ac-ald"></tbody></table></div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-hdr"><h3>Long Drive &#8212; Flight B</h3><span class="fbadge b-b">B</span></div>
+          <div class="tbl-wrap"><table><thead><tr><th class="tc">Award</th><th>Player</th><th class="tr">Amt</th></tr></thead><tbody id="ac-bld"></tbody></table></div>
+        </div>
+        <div class="tcard">
+          <div class="tcard-hdr"><h3>Low Putts</h3></div>
+          <div class="tbl-wrap"><table><thead><tr><th class="tc">Award</th><th>Player</th><th class="tr">Amt</th></tr></thead><tbody id="ac-lp"></tbody></table></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tcard-hdr"><h3>Closest to the Pin</h3></div>
+        <div class="tbl-wrap"><table><thead><tr><th class="tc">Award</th><th>Player</th><th class="tr">Amount</th></tr></thead><tbody id="ac-kp"></tbody></table></div>
+      </div>
     </div>
   </section>
 
   <!-- SKINS -->
   <section class="mb">
-    <div class="sec-hdr"><span>🎯</span><h2>Tournament Skins</h2><div class="line"></div></div>
+    <div class="sec-hdr"><span>&#127919;</span><h2>Tournament Skins</h2><div class="line"></div></div>
     <div class="tcard">
       <div class="fbar">
-        <label>Tournament</label><select id="sf-t" onchange="renderSkins()"><option value="">All</option></select>
-        <label>Player</label><select id="sf-p" onchange="renderSkins()"><option value="">All</option></select>
-        <label>Category</label><select id="sf-c" onchange="renderSkins()"><option value="">All</option></select>
+        <label>Tournament</label><select id="sf-t" onchange="renderSkins()"></select>
+        <label>Player</label><select id="sf-p" onchange="renderSkins()"><option value="">All Players</option></select>
+        <label>Category</label><select id="sf-c" onchange="renderSkins()"><option value="">All Categories</option></select>
       </div>
-      <div class="tbl-wrap"><table><thead><tr><th>Tournament</th><th>Player</th><th>Category</th><th class="tc">Total Skins</th><th>Amount</th></tr></thead><tbody id="skins-body"></tbody></table></div>
+      <div class="tbl-wrap"><table id="tbl-skins">
+        <thead><tr>
+          <th class="sortable" data-table="skins" data-key="tid"    data-type="str">Tournament <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable" data-table="skins" data-key="player" data-type="str">Player <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable" data-table="skins" data-key="cat"    data-type="str">Category <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tc" data-table="skins" data-key="total" data-type="num">Total Skins <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tr" data-table="skins" data-key="amt"   data-type="num">Amount <span class="sort-icon">&#8645;</span></th>
+        </tr></thead>
+        <tbody id="skins-body"></tbody>
+      </table></div>
     </div>
   </section>
 
   <!-- RESULTS -->
   <section class="mb">
-    <div class="sec-hdr"><span>📋</span><h2>Tournament Results</h2><div class="line"></div></div>
+    <div class="sec-hdr"><span>&#128203;</span><h2>Tournament Results</h2><div class="line"></div></div>
     <div class="tcard">
       <div class="fbar">
-        <label>Tournament</label><select id="rf-t" onchange="renderResults()"><option value="">All</option></select>
+        <label>Tournament</label><select id="rf-t" onchange="renderResults()"></select>
         <label>Flight</label>
         <select id="rf-f" onchange="renderResults()">
-          <option value="">All</option><option value="A">Flight A</option><option value="B">Flight B</option>
+          <option value="">All Flights</option><option value="A">Flight A</option><option value="B">Flight B</option>
         </select>
       </div>
-      <div class="tbl-wrap"><table><thead><tr><th>Player</th><th class="tc">Flight</th><th class="tc">Handicap</th><th class="tc">Gross</th><th class="tc">Net</th><th class="tc">Front 9</th><th class="tc">Back 9</th><th class="tc">Putts</th></tr></thead><tbody id="res-body"></tbody></table></div>
+      <div class="tbl-wrap"><table id="tbl-results">
+        <thead><tr>
+          <th class="sortable" data-table="results" data-key="player" data-type="str">Player <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tc" data-table="results" data-key="flight" data-type="str">Flight <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tc" data-table="results" data-key="hcp"    data-type="num">HCP <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tc" data-table="results" data-key="gross"  data-type="num">Gross <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tc" data-table="results" data-key="net"    data-type="num">Net <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tc" data-table="results" data-key="f9"     data-type="num">Front 9 <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tc" data-table="results" data-key="b9"     data-type="num">Back 9 <span class="sort-icon">&#8645;</span></th>
+          <th class="sortable tc" data-table="results" data-key="putts"  data-type="num">Putts <span class="sort-icon">&#8645;</span></th>
+        </tr></thead>
+        <tbody id="res-body"></tbody>
+      </table></div>
     </div>
   </section>
 
 </main>
-<footer>MIGC 2026 Season &nbsp;·&nbsp; Dashboard v1.0 &nbsp;·&nbsp; Updated May 2026</footer>
+<footer>MIGC 2026 Season &nbsp;&middot;&nbsp; Dashboard v1.2 &nbsp;&middot;&nbsp; Updated May 2026</footer>
 
 <script>
 // ═══════════════════════════════════════════════════
 // DATA
 // ═══════════════════════════════════════════════════
-
 const PLAYERS = [
   {id:1,  name:"Art Hernandez",   status:"Member", team:"The Money Team"},
   {id:2,  name:"Adrianna Moore",  status:"Member", team:"None"},
@@ -244,25 +335,26 @@ const PLAYERS = [
   {id:36, name:"Taylor Yates",    status:"Member", team:"19th Hole Cartel"},
   {id:37, name:"Tom Shea",        status:"Member", team:"White Rice"},
   {id:38, name:"Will Vuong",      status:"Member", team:"White Rice"},
-  {id:"39a",name:"Charles Tran",  status:"Member", team:"None"},
-  {id:"39b",name:"Lucas Bouloy",  status:"Guest",  team:"None"},
-  {id:40, name:"Mat Vigil",       status:"Guest",  team:"None"},
-  {id:41, name:"Jeff Carey",      status:"Guest",  team:"None"},
-  {id:42, name:"Jason Payton",    status:"Guest",  team:"None"},
-  {id:43, name:"Med Baheta",      status:"Guest",  team:"None"},
+  {id:39, name:"Charles Tran",    status:"Member", team:"None"},
+  {id:40, name:"Lucas Bouloy",    status:"Guest",  team:"None"},
+  {id:41, name:"Mat Vigil",       status:"Guest",  team:"None"},
+  {id:42, name:"Jeff Carey",      status:"Guest",  team:"None"},
+  {id:43, name:"Jason Payton",    status:"Guest",  team:"None"},
+  {id:44, name:"Med Baheta",      status:"Guest",  team:"None"},
 ];
 
 const TOURNAMENTS = [
   {id:"2026_01", name:"CCRB",                      date:"Jan 18, 2026", course:"CCRB"},
   {id:"2026_02", name:"Cross Creek",               date:"Feb 9, 2026",  course:"Cross Creek GC"},
   {id:"2026_03", name:"Sycuan",                    date:"Mar 16, 2026", course:"Sycuan Resort"},
-  {id:"2026_04", name:"The Vineyard at Escondido", date:"Apr 6, 2026",  course:"The Vineyard at Escondido"},
+  {id:"2026_04", name:"The Vineyard",              date:"Apr 6, 2026",  course:"The Vineyard at Escondido"},
   {id:"2026_05", name:"The Links at Lakehouse",    date:"May 4, 2026",  course:"The Links at Lakehouse"},
 ];
 
 const RESULTS = [
+  // 2026_05 — The Links at Lakehouse
   {tid:"2026_05",pid:15,player:"John Nothdurft",flight:"A",hcp:14,gross:88, net:74,f9:47,b9:41,putts:26},
-  {tid:"2026_05",pid:40,player:"Mat Vigil",     flight:"A",hcp:13,gross:85, net:72,f9:40,b9:45,putts:34},
+  {tid:"2026_05",pid:41,player:"Mat Vigil",     flight:"A",hcp:13,gross:85, net:72,f9:40,b9:45,putts:34},
   {tid:"2026_05",pid:13,player:"David Wu",      flight:"A",hcp:21,gross:94, net:73,f9:44,b9:50,putts:36},
   {tid:"2026_05",pid:35,player:"Tam Tran",      flight:"A",hcp:20,gross:93, net:73,f9:47,b9:46,putts:30},
   {tid:"2026_05",pid:7, player:"Chris Chang",   flight:"A",hcp:12,gross:86, net:74,f9:43,b9:43,putts:35},
@@ -272,12 +364,12 @@ const RESULTS = [
   {tid:"2026_05",pid:29,player:"Paul Toledo",   flight:"A",hcp:14,gross:91, net:77,f9:48,b9:43,putts:35},
   {tid:"2026_05",pid:36,player:"Taylor Yates",  flight:"A",hcp:9, gross:88, net:79,f9:47,b9:41,putts:34},
   {tid:"2026_05",pid:6, player:"Carlos Bouloy", flight:"A",hcp:17,gross:97, net:80,f9:45,b9:52,putts:33},
-  {tid:"2026_05",pid:43,player:"Med Baheta",    flight:"A",hcp:19,gross:100,net:81,f9:53,b9:47,putts:36},
+  {tid:"2026_05",pid:44,player:"Med Baheta",    flight:"A",hcp:19,gross:100,net:81,f9:53,b9:47,putts:36},
   {tid:"2026_05",pid:4, player:"Brock Hansen",  flight:"A",hcp:20,gross:106,net:86,f9:48,b9:58,putts:32},
   {tid:"2026_05",pid:34,player:"Tai Ho",        flight:"A",hcp:12,gross:100,net:88,f9:48,b9:52,putts:35},
   {tid:"2026_05",pid:14,player:"Devan French",  flight:"B",hcp:36,gross:104,net:68,f9:52,b9:52,putts:37},
   {tid:"2026_05",pid:10,player:"Danny Lopez",   flight:"B",hcp:19,gross:92, net:73,f9:47,b9:45,putts:28},
-  {tid:"2026_05",pid:42,player:"Jason Payton",  flight:"B",hcp:30,gross:104,net:74,f9:51,b9:53,putts:38},
+  {tid:"2026_05",pid:43,player:"Jason Payton",  flight:"B",hcp:30,gross:104,net:74,f9:51,b9:53,putts:38},
   {tid:"2026_05",pid:1, player:"Art Hernandez", flight:"B",hcp:21,gross:96, net:75,f9:51,b9:45,putts:31},
   {tid:"2026_05",pid:24,player:"Mike Paguyo",   flight:"B",hcp:23,gross:98, net:75,f9:47,b9:51,putts:36},
   {tid:"2026_05",pid:38,player:"Will Vuong",    flight:"B",hcp:20,gross:95, net:75,f9:47,b9:48,putts:35},
@@ -287,16 +379,53 @@ const RESULTS = [
   {tid:"2026_05",pid:30,player:"Ken Sogabe",    flight:"B",hcp:35,gross:116,net:81,f9:58,b9:58,putts:36},
   {tid:"2026_05",pid:9, player:"Colin Harrison",flight:"B",hcp:20,gross:105,net:85,f9:45,b9:60,putts:33},
   {tid:"2026_05",pid:25,player:"Mike Pena",     flight:"B",hcp:36,gross:127,net:91,f9:67,b9:60,putts:39},
+  // 2026_04 — The Vineyard at Escondido
+  {tid:"2026_04",pid:3, player:"Andy Pendleton", flight:"A",hcp:9, gross:89, net:80,f9:46,b9:43,putts:29},
+  {tid:"2026_04",pid:7, player:"Chris Chang",    flight:"A",hcp:15,gross:86, net:71,f9:45,b9:41,putts:40},
+  {tid:"2026_04",pid:8, player:"Colin Chang",    flight:"A",hcp:17,gross:96, net:79,f9:50,b9:46,putts:33},
+  {tid:"2026_04",pid:12,player:"Darrick Sogabe", flight:"A",hcp:20,gross:101,net:81,f9:53,b9:48,putts:35},
+  {tid:"2026_04",pid:42,player:"Jeff Carey",     flight:"A",hcp:11,gross:100,net:89,f9:43,b9:57,putts:34},
+  {tid:"2026_04",pid:15,player:"John Nothdurft", flight:"A",hcp:16,gross:87, net:71,f9:45,b9:42,putts:35},
+  {tid:"2026_04",pid:16,player:"Jorge Rayo",     flight:"A",hcp:18,gross:98, net:80,f9:49,b9:49,putts:39},
+  {tid:"2026_04",pid:17,player:"JP Hill",        flight:"A",hcp:15,gross:93, net:78,f9:42,b9:51,putts:35},
+  {tid:"2026_04",pid:20,player:"Kevin Vargas",   flight:"A",hcp:8, gross:79, net:71,f9:38,b9:41,putts:31},
+  {tid:"2026_04",pid:40,player:"Lucas Bouloy",   flight:"A",hcp:8, gross:76, net:68,f9:37,b9:39,putts:35},
+  {tid:"2026_04",pid:41,player:"Mat Vigil",      flight:"A",hcp:15,gross:94, net:79,f9:46,b9:48,putts:35},
+  {tid:"2026_04",pid:26,player:"Mikel Hodges",   flight:"A",hcp:21,gross:93, net:72,f9:47,b9:46,putts:38},
+  {tid:"2026_04",pid:29,player:"Paul Toledo",    flight:"A",hcp:17,gross:84, net:67,f9:41,b9:43,putts:32},
+  {tid:"2026_04",pid:31,player:"Sarith Kim",     flight:"A",hcp:17,gross:104,net:87,f9:50,b9:54,putts:38},
+  {tid:"2026_04",pid:34,player:"Tai Ho",         flight:"A",hcp:13,gross:86, net:73,f9:48,b9:38,putts:33},
+  {tid:"2026_04",pid:35,player:"Tam Tran",       flight:"A",hcp:21,gross:103,net:82,f9:52,b9:51,putts:34},
+  {tid:"2026_04",pid:36,player:"Taylor Yates",   flight:"A",hcp:9, gross:85, net:76,f9:42,b9:43,putts:34},
+  {tid:"2026_04",pid:37,player:"Tom Shea",       flight:"A",hcp:8, gross:83, net:75,f9:40,b9:43,putts:32},
+  {tid:"2026_04",pid:2, player:"Adrianna Moore", flight:"B",hcp:36,gross:109,net:73,f9:52,b9:57,putts:31},
+  {tid:"2026_04",pid:1, player:"Art Hernandez",  flight:"B",hcp:22,gross:94, net:72,f9:44,b9:50,putts:35},
+  {tid:"2026_04",pid:6, player:"Carlos Bouloy",  flight:"B",hcp:16,gross:91, net:75,f9:44,b9:47,putts:31},
+  {tid:"2026_04",pid:9, player:"Colin Harrison", flight:"B",hcp:19,gross:105,net:86,f9:54,b9:51,putts:37},
+  {tid:"2026_04",pid:10,player:"Danny Lopez",    flight:"B",hcp:20,gross:88, net:68,f9:47,b9:41,putts:32},
+  {tid:"2026_04",pid:11,player:"Danny Marin",    flight:"B",hcp:30,gross:120,net:90,f9:55,b9:65,putts:39},
+  {tid:"2026_04",pid:14,player:"Devan French",   flight:"B",hcp:36,gross:132,net:96,f9:73,b9:59,putts:39},
+  {tid:"2026_04",pid:18,player:"Juan Ramirez",   flight:"B",hcp:36,gross:106,net:70,f9:55,b9:51,putts:39},
+  {tid:"2026_04",pid:30,player:"Ken Sogabe",     flight:"B",hcp:30,gross:101,net:71,f9:53,b9:48,putts:34},
+  {tid:"2026_04",pid:19,player:"Kevin Taylor",   flight:"B",hcp:24,gross:92, net:68,f9:44,b9:48,putts:37},
+  {tid:"2026_04",pid:22,player:"Mark Horgan",    flight:"B",hcp:24,gross:105,net:81,f9:53,b9:52,putts:38},
+  {tid:"2026_04",pid:24,player:"Mike Paguyo",    flight:"B",hcp:22,gross:100,net:78,f9:49,b9:51,putts:38},
+  {tid:"2026_04",pid:25,player:"Mike Pena",      flight:"B",hcp:36,gross:114,net:78,f9:58,b9:56,putts:37},
+  {tid:"2026_04",pid:27,player:"Nick Harris",    flight:"B",hcp:19,gross:92, net:73,f9:45,b9:47,putts:33},
+  {tid:"2026_04",pid:28,player:"Paul Hsieh",     flight:"B",hcp:30,gross:109,net:79,f9:60,b9:49,putts:42},
+  {tid:"2026_04",pid:33,player:"Steve Chiang",   flight:"B",hcp:22,gross:98, net:76,f9:49,b9:49,putts:33},
+  {tid:"2026_04",pid:38,player:"Will Vuong",     flight:"B",hcp:20,gross:100,net:80,f9:51,b9:49,putts:38},
 ];
 
 const ACHIEVEMENTS = [
-  {tid:"2026_05",pid:40,player:"Mat Vigil",      cat:"Flight A - Overall",    pl:"1",     amt:70},
+  // 2026_05
+  {tid:"2026_05",pid:41,player:"Mat Vigil",      cat:"Flight A - Overall",    pl:"1",     amt:70},
   {tid:"2026_05",pid:13,player:"David Wu",        cat:"Flight A - Overall",    pl:"2",     amt:35},
   {tid:"2026_05",pid:35,player:"Tam Tran",        cat:"Flight A - Overall",    pl:"2",     amt:35},
   {tid:"2026_05",pid:14,player:"Devan French",    cat:"Flight B - Overall",    pl:"1",     amt:65},
   {tid:"2026_05",pid:10,player:"Danny Lopez",     cat:"Flight B - Overall",    pl:"2",     amt:39},
-  {tid:"2026_05",pid:42,player:"Jason Payton",    cat:"Flight B - Overall",    pl:"3",     amt:26},
-  {tid:"2026_05",pid:40,player:"Mat Vigil",       cat:"Flight A - Front 9",    pl:"1",     amt:21},
+  {tid:"2026_05",pid:43,player:"Jason Payton",    cat:"Flight B - Overall",    pl:"3",     amt:26},
+  {tid:"2026_05",pid:41,player:"Mat Vigil",       cat:"Flight A - Front 9",    pl:"1",     amt:21},
   {tid:"2026_05",pid:13,player:"David Wu",        cat:"Flight A - Front 9",    pl:"1",     amt:21},
   {tid:"2026_05",pid:14,player:"Devan French",    cat:"Flight B - Front 9",    pl:"1",     amt:26},
   {tid:"2026_05",pid:9, player:"Colin Harrison",  cat:"Flight B - Front 9",    pl:"2",     amt:13},
@@ -308,276 +437,361 @@ const ACHIEVEMENTS = [
   {tid:"2026_05",pid:20,player:"Kevin Vargas",    cat:"Flight A - Long Drive", pl:"Winner",amt:28},
   {tid:"2026_05",pid:19,player:"Kevin Taylor",    cat:"Flight B - Long Drive", pl:"Winner",amt:26},
   {tid:"2026_05",pid:20,player:"Kevin Vargas",    cat:"Closest to the Pin",    pl:"Winner",amt:27},
-  {tid:"2026_05",pid:43,player:"Med Baheta",      cat:"Closest to the Pin",    pl:"Winner",amt:27},
+  {tid:"2026_05",pid:44,player:"Med Baheta",      cat:"Closest to the Pin",    pl:"Winner",amt:27},
   {tid:"2026_05",pid:29,player:"Paul Toledo",     cat:"Closest to the Pin",    pl:"Winner",amt:27},
   {tid:"2026_05",pid:25,player:"Mike Pena",       cat:"Closest to the Pin",    pl:"Winner",amt:27},
   {tid:"2026_05",pid:1, player:"Art Hernandez",   cat:"Closest to the Pin",    pl:"Winner",amt:27},
+  // 2026_04
+  {tid:"2026_04",pid:29,player:"Paul Toledo",     cat:"Flight A - Overall",    pl:"1",     amt:90},
+  {tid:"2026_04",pid:40,player:"Lucas Bouloy",    cat:"Flight A - Overall",    pl:"2",     amt:54},
+  {tid:"2026_04",pid:20,player:"Kevin Vargas",    cat:"Flight A - Overall",    pl:"3",     amt:12},
+  {tid:"2026_04",pid:7, player:"Chris Chang",     cat:"Flight A - Overall",    pl:"3",     amt:12},
+  {tid:"2026_04",pid:15,player:"John Nothdurft",  cat:"Flight A - Overall",    pl:"3",     amt:12},
+  {tid:"2026_04",pid:10,player:"Danny Lopez",     cat:"Flight B - Overall",    pl:"1",     amt:72},
+  {tid:"2026_04",pid:19,player:"Kevin Taylor",    cat:"Flight B - Overall",    pl:"1",     amt:72},
+  {tid:"2026_04",pid:18,player:"Juan Ramirez",    cat:"Flight B - Overall",    pl:"3",     amt:36},
+  {tid:"2026_04",pid:29,player:"Paul Toledo",     cat:"Flight A - Front 9",    pl:"1",     amt:27},
+  {tid:"2026_04",pid:40,player:"Lucas Bouloy",    cat:"Flight A - Front 9",    pl:"1",     amt:27},
+  {tid:"2026_04",pid:19,player:"Kevin Taylor",    cat:"Flight B - Front 9",    pl:"1",     amt:36},
+  {tid:"2026_04",pid:1, player:"Art Hernandez",   cat:"Flight B - Front 9",    pl:"2",     amt:18},
+  {tid:"2026_04",pid:34,player:"Tai Ho",          cat:"Flight A - Back 9",     pl:"1",     amt:36},
+  {tid:"2026_04",pid:7, player:"Chris Chang",     cat:"Flight A - Back 9",     pl:"2",     amt:18},
+  {tid:"2026_04",pid:10,player:"Danny Lopez",     cat:"Flight B - Back 9",     pl:"1",     amt:36},
+  {tid:"2026_04",pid:18,player:"Juan Ramirez",    cat:"Flight B - Back 9",     pl:"2",     amt:9},
+  {tid:"2026_04",pid:30,player:"Ken Sogabe",      cat:"Flight B - Back 9",     pl:"2",     amt:9},
+  {tid:"2026_04",pid:3, player:"Andy Pendleton",  cat:"Low Putts",             pl:"Winner",amt:36},
+  {tid:"2026_04",pid:16,player:"Jorge Rayo",      cat:"Flight A - Long Drive", pl:"Winner",amt:36},
+  {tid:"2026_04",pid:28,player:"Paul Hsieh",      cat:"Flight B - Long Drive", pl:"Winner",amt:36},
+  {tid:"2026_04",pid:37,player:"Tom Shea",        cat:"Closest to the Pin",    pl:"Winner",amt:45},
+  {tid:"2026_04",pid:20,player:"Kevin Vargas",    cat:"Closest to the Pin",    pl:"Winner",amt:45},
+  {tid:"2026_04",pid:7, player:"Chris Chang",     cat:"Closest to the Pin",    pl:"Winner",amt:45},
+  {tid:"2026_04",pid:37,player:"Tom Shea",        cat:"Closest to the Pin",    pl:"Winner",amt:45},
 ];
 
 const SKINS = [
-  {tid:"2026_05",pid:15,player:"John Nothdurft", cat:"Flight A - Skins",total:9,amt:126},
-  {tid:"2026_05",pid:13,player:"David Wu",        cat:"Flight A - Skins",total:3,amt:42},
-  {tid:"2026_05",pid:20,player:"Kevin Vargas",    cat:"Flight A - Skins",total:3,amt:42},
-  {tid:"2026_05",pid:43,player:"Med Baheta",      cat:"Flight A - Skins",total:3,amt:42},
-  {tid:"2026_05",pid:14,player:"Devan French",    cat:"Flight B - Skins",total:6,amt:78},
-  {tid:"2026_05",pid:10,player:"Danny Lopez",     cat:"Flight B - Skins",total:3,amt:39},
-  {tid:"2026_05",pid:25,player:"Mike Pena",       cat:"Flight B - Skins",total:3,amt:39},
-  {tid:"2026_05",pid:42,player:"Jason Payton",    cat:"Flight B - Skins",total:2,amt:26},
-  {tid:"2026_05",pid:28,player:"Paul Hsieh",      cat:"Flight B - Skins",total:2,amt:26},
-  {tid:"2026_05",pid:1, player:"Art Hernandez",   cat:"Flight B - Skins",total:1,amt:13},
-  {tid:"2026_05",pid:9, player:"Colin Harrison",  cat:"Flight B - Skins",total:1,amt:13},
+  // 2026_05
+  {tid:"2026_05",pid:15,player:"John Nothdurft", cat:"Flight A - Skins",total:9, amt:126},
+  {tid:"2026_05",pid:13,player:"David Wu",        cat:"Flight A - Skins",total:3, amt:42},
+  {tid:"2026_05",pid:20,player:"Kevin Vargas",    cat:"Flight A - Skins",total:3, amt:42},
+  {tid:"2026_05",pid:44,player:"Med Baheta",      cat:"Flight A - Skins",total:3, amt:42},
+  {tid:"2026_05",pid:14,player:"Devan French",    cat:"Flight B - Skins",total:6, amt:78},
+  {tid:"2026_05",pid:10,player:"Danny Lopez",     cat:"Flight B - Skins",total:3, amt:39},
+  {tid:"2026_05",pid:25,player:"Mike Pena",       cat:"Flight B - Skins",total:3, amt:39},
+  {tid:"2026_05",pid:43,player:"Jason Payton",    cat:"Flight B - Skins",total:2, amt:26},
+  {tid:"2026_05",pid:28,player:"Paul Hsieh",      cat:"Flight B - Skins",total:2, amt:26},
+  {tid:"2026_05",pid:1, player:"Art Hernandez",   cat:"Flight B - Skins",total:1, amt:13},
+  {tid:"2026_05",pid:9, player:"Colin Harrison",  cat:"Flight B - Skins",total:1, amt:13},
+  // 2026_04
+  {tid:"2026_04",pid:34,player:"Tai Ho",          cat:"Flight A - Skins",total:2, amt:36},
+  {tid:"2026_04",pid:29,player:"Paul Toledo",     cat:"Flight A - Skins",total:16,amt:288},
+  {tid:"2026_04",pid:28,player:"Paul Hsieh",      cat:"Flight B - Skins",total:1, amt:18},
+  {tid:"2026_04",pid:10,player:"Danny Lopez",     cat:"Flight B - Skins",total:2, amt:36},
+  {tid:"2026_04",pid:30,player:"Ken Sogabe",      cat:"Flight B - Skins",total:3, amt:54},
+  {tid:"2026_04",pid:19,player:"Kevin Taylor",    cat:"Flight B - Skins",total:4, amt:72},
+  {tid:"2026_04",pid:25,player:"Mike Pena",       cat:"Flight B - Skins",total:4, amt:72},
+  {tid:"2026_04",pid:2, player:"Adrianna Moore",  cat:"Flight B - Skins",total:4, amt:72},
 ];
+
+// ═══════════════════════════════════════════════════
+// COMPUTED CONSTANTS
+// ═══════════════════════════════════════════════════
+// Most recent tournament that has data (lex sort works for 2026_XX)
+const MOST_RECENT_TID = [...new Set([
+  ...RESULTS.map(r=>r.tid),
+  ...ACHIEVEMENTS.map(a=>a.tid),
+  ...SKINS.map(s=>s.tid)
+])].sort().pop();
 
 // ═══════════════════════════════════════════════════
 // HELPERS
 // ═══════════════════════════════════════════════════
-
 const tName  = id => (TOURNAMENTS.find(t=>t.id===id)||{name:id}).name;
-const pGuest = name => (PLAYERS.find(p=>p.name===name)||{status:"Member"}).status === "Guest";
-const $      = id => document.getElementById(id);
+const pGuest = name => (PLAYERS.find(p=>p.name===name)||{status:"Member"}).status==="Guest";
+const el     = id => document.getElementById(id);
 const fmt$   = n  => "$"+Number(n).toFixed(2);
-const gtag   = name => pGuest(name) ? '<span class="gtag">Guest</span>' : "";
-const rb     = n => `<span class="rbadge ${n<=3?'rb'+n:'rbo'}">${n}</span>`;
+const gtag   = name => pGuest(name)?'<span class="gtag">Guest</span>':"";
 
-function moneyMap(){
-  const m={};
-  ACHIEVEMENTS.forEach(a=>{ m[a.player]=m[a.player]||{ach:0,skins:0}; m[a.player].ach+=a.amt; });
-  SKINS.forEach(s=>{       m[s.player]=m[s.player]||{ach:0,skins:0}; m[s.player].skins+=s.amt; });
-  return m;
+const pill = pl => {
+  if(pl==="1")     return '<span class="pill p1">&#127945; 1st</span>';
+  if(pl==="2")     return '<span class="pill p2">&#127946; 2nd</span>';
+  if(pl==="3")     return '<span class="pill p3">&#127947; 3rd</span>';
+  return '<span class="pill pw">&#10003; Winner</span>';
+};
+const plCls = pl => pl==="1"?"r1":pl==="2"?"r2":pl==="3"?"r3":pl==="Winner"?"rw":"";
+
+const rb = n => {
+  const cls = n===1?"rb1":n===2?"rb2":n===3?"rb3":"rbo";
+  return `<span class="rbadge ${cls}">${n}</span>`;
+};
+
+// ═══════════════════════════════════════════════════
+// SORT STATE
+// ═══════════════════════════════════════════════════
+const SORT = {
+  money:  {col:null,dir:"asc",type:"num"},
+  skins:  {col:null,dir:"asc",type:"str"},
+  results:{col:null,dir:"asc",type:"str"}
+};
+
+function applySort(rows, tableKey) {
+  const s = SORT[tableKey];
+  if(!s.col) return rows;
+  return [...rows].sort((a,b) => {
+    const av=a[s.col], bv=b[s.col];
+    if(s.type==="num") return s.dir==="asc"?av-bv:bv-av;
+    return s.dir==="asc"?String(av||"").localeCompare(String(bv||"")):String(bv||"").localeCompare(String(av||""));
+  });
 }
 
-function topEarner(){
-  const m=moneyMap(); let best=null,max=-1;
-  for(const [p,v] of Object.entries(m)){ const t=v.ach+v.skins; if(t>max){max=t;best=p;} }
-  return best?{name:best,total:max}:null;
+function updateSortHeaders(tableId, tableKey) {
+  document.querySelectorAll(`#${tableId} thead th.sortable`).forEach(th => {
+    const s=SORT[tableKey], key=th.dataset.key, icon=th.querySelector(".sort-icon");
+    th.classList.remove("sort-asc","sort-desc");
+    icon.textContent="&#8645;";
+    if(s.col===key){ th.classList.add(s.dir==="asc"?"sort-asc":"sort-desc"); icon.textContent=s.dir==="asc"?"&#9650;":"&#9660;"; }
+  });
 }
 
-function mostOverallWins(){
-  const m={};
-  ACHIEVEMENTS.filter(a=>a.cat.includes("Overall")&&a.pl==="1").forEach(a=>{ m[a.player]=(m[a.player]||0)+1; });
-  const s=Object.entries(m).sort((a,b)=>b[1]-a[1]);
-  return s.length?{name:s[0][0],count:s[0][1]}:null;
-}
-
-function nextTourney(){
-  const today=new Date("2026-05-21");
-  const fut=TOURNAMENTS.map(t=>({...t,d:new Date(t.date)})).filter(t=>t.d>today).sort((a,b)=>a.d-b.d);
-  return fut.length?fut[0]:null;
+function bindSortHeaders() {
+  document.querySelectorAll("thead th.sortable").forEach(th => {
+    th.addEventListener("click", () => {
+      const tbl=th.dataset.table, key=th.dataset.key, type=th.dataset.type;
+      const s=SORT[tbl];
+      if(s.col===key){ s.dir=s.dir==="asc"?"desc":"asc"; } else { s.col=key; s.dir="asc"; s.type=type; }
+      if(tbl==="money")   { renderMoney();   updateSortHeaders("tbl-money","money"); }
+      if(tbl==="skins")   { renderSkins();   updateSortHeaders("tbl-skins","skins"); }
+      if(tbl==="results") { renderResults(); updateSortHeaders("tbl-results","results"); }
+    });
+  });
 }
 
 // ═══════════════════════════════════════════════════
 // HEADER
 // ═══════════════════════════════════════════════════
-function renderHeader(){
-  const purse = ACHIEVEMENTS.reduce((s,a)=>s+a.amt,0)+SKINS.reduce((s,k)=>s+k.amt,0);
-  const ml  = topEarner();
-  const mw  = mostOverallWins();
-  const nt  = nextTourney();
-  $("h-purse").textContent  = fmt$(purse);
-  $("h-leader").textContent = ml ? `${ml.name} — ${fmt$(ml.total)}` : "—";
-  $("h-wins").textContent   = mw ? `${mw.name} — ${mw.count} Win${mw.count!==1?"s":""}` : "—";
-  $("h-next").textContent   = nt ? `${nt.name} · ${nt.date}` : "TBD";
+function renderHeader() {
+  const tidsWithData = [...new Set([...RESULTS.map(r=>r.tid)])].sort();
+  const today = new Date("2026-05-22");
+  const fut = TOURNAMENTS.map(t=>({...t,d:new Date(t.date)})).filter(t=>t.d>today).sort((a,b)=>a.d-b.d);
+  el("h-played").textContent = `${tidsWithData.length} of ${TOURNAMENTS.length}`;
+  el("h-next").textContent   = fut.length ? `${fut[0].name} · ${fut[0].date}` : "TBD";
 }
 
 // ═══════════════════════════════════════════════════
 // KPIs
 // ═══════════════════════════════════════════════════
-function renderKPIs(){
-  const ml=topEarner();
-  const mw=mostOverallWins();
+function renderKPIs() {
+  // Money leader (achievements only)
+  const achMap={};
+  ACHIEVEMENTS.forEach(a=>{ achMap[a.player]=(achMap[a.player]||0)+a.amt; });
+  const ml=Object.entries(achMap).sort((a,b)=>b[1]-a[1])[0];
 
-  const kp=Object.entries(
-    ACHIEVEMENTS.filter(a=>a.cat==="Closest to the Pin")
-      .reduce((m,a)=>{ m[a.player]=(m[a.player]||0)+1; return m;},{})
-  ).sort((a,b)=>b[1]-a[1])[0];
+  // Most KP wins
+  const kpMap={};
+  ACHIEVEMENTS.filter(a=>a.cat==="Closest to the Pin").forEach(a=>{ kpMap[a.player]=(kpMap[a.player]||0)+1; });
+  const kp=Object.entries(kpMap).sort((a,b)=>b[1]-a[1])[0];
 
-  const putts=RESULTS.reduce((m,r)=>{ m[r.player]=m[r.player]||{s:0,c:0}; m[r.player].s+=r.putts; m[r.player].c++; return m;},{});
-  const lp=Object.entries(putts).map(([p,v])=>({name:p,avg:v.s/v.c})).sort((a,b)=>a.avg-b.avg)[0];
+  // Lowest avg putts
+  const pMap={};
+  RESULTS.forEach(r=>{ pMap[r.player]=pMap[r.player]||{s:0,c:0}; pMap[r.player].s+=r.putts; pMap[r.player].c++; });
+  const lp=Object.entries(pMap).map(([n,v])=>({n,avg:v.s/v.c})).sort((a,b)=>a.avg-b.avg)[0];
 
-  const ld=Object.entries(
-    ACHIEVEMENTS.filter(a=>a.cat.includes("Long Drive"))
-      .reduce((m,a)=>{ m[a.player]=(m[a.player]||0)+1; return m;},{})
-  ).sort((a,b)=>b[1]-a[1])[0];
+  // Most long drives
+  const ldMap={};
+  ACHIEVEMENTS.filter(a=>a.cat.includes("Long Drive")).forEach(a=>{ ldMap[a.player]=(ldMap[a.player]||0)+1; });
+  const ld=Object.entries(ldMap).sort((a,b)=>b[1]-a[1])[0];
 
-  const cards=[
-    {icon:"💰",lbl:"Money Leader",    name:ml?.name||"—",val:ml?fmt$(ml.total):"—"},
-    {icon:"🏆",lbl:"Most Wins",       name:mw?.name||"—",val:mw?`${mw.count} Win${mw.count!==1?"s":""}`:"—"},
-    {icon:"📍",lbl:"Most KP Wins",    name:kp?kp[0]:"—", val:kp?`${kp[1]} KP Win${kp[1]>1?"s":""}`:"—"},
-    {icon:"🎱",lbl:"Lowest Avg Putts",name:lp?.name||"—",val:lp?`${lp.avg.toFixed(1)} avg`:"—"},
-    {icon:"💨",lbl:"Most Long Drives", name:ld?ld[0]:"—", val:ld?`${ld[1]} Drive${ld[1]>1?"s":""}`:"—"},
-  ];
-  $("kpi-grid").innerHTML=cards.map(c=>`
-    <div class="kpi-card">
-      <div class="icon">${c.icon}</div>
-      <div class="klbl">${c.lbl}</div>
-      <div class="kname">${c.name}</div>
-      <div class="kval">${c.val}</div>
-    </div>`).join("");
+  el("kpi-grid").innerHTML=[
+    {icon:"&#128176;",lbl:"Money Leader",    name:ml?ml[0]:"—",  val:ml?fmt$(ml[1]):"—"},
+    {icon:"&#128205;",lbl:"Most KP Wins",    name:kp?kp[0]:"—",  val:kp?`${kp[1]} Win${kp[1]>1?"s":""}`:"—"},
+    {icon:"&#127921;",lbl:"Lowest Avg Putts",name:lp?lp.n:"—",   val:lp?`${lp.avg.toFixed(1)} avg`:"—"},
+    {icon:"&#128168;",lbl:"Most Long Drives", name:ld?ld[0]:"—",  val:ld?`${ld[1]} Drive${ld[1]>1?"s":""}`:"—"},
+  ].map(c=>`<div class="kpi-card">
+    <div class="icon">${c.icon}</div>
+    <div class="klbl">${c.lbl}</div>
+    <div class="kname">${c.name}</div>
+    <div class="kval">${c.val}</div>
+  </div>`).join("");
 }
 
 // ═══════════════════════════════════════════════════
-// FLIGHT LEADERBOARDS
+// FLIGHT LEADERBOARDS — X Tied logic
 // ═══════════════════════════════════════════════════
-function renderLB(flight,tbodyId){
-  const key=`Flight ${flight} - Overall`;
-  const m={};
-  ACHIEVEMENTS.filter(a=>a.cat===key).forEach(a=>{
-    m[a.player]=m[a.player]||{p:a.player,w1:0,w2:0,w3:0,earn:0};
-    if(a.pl==="1")m[a.player].w1++;
-    else if(a.pl==="2")m[a.player].w2++;
-    else if(a.pl==="3")m[a.player].w3++;
-    m[a.player].earn+=a.amt;
+function renderLB(flight, tbodyId) {
+  const key = `Flight ${flight} - Overall`;
+  const m = {};
+  ACHIEVEMENTS.filter(a=>a.cat===key).forEach(a => {
+    m[a.player] = m[a.player] || {p:a.player, w1:0, w2:0, w3:0};
+    if(a.pl==="1") m[a.player].w1++;
+    else if(a.pl==="2") m[a.player].w2++;
+    else if(a.pl==="3") m[a.player].w3++;
   });
-  const rows=Object.values(m).sort((a,b)=>b.earn-a.earn);
-  const body=$(tbodyId);
-  if(!rows.length){ body.innerHTML=`<tr class="empty"><td colspan="6">No data yet</td></tr>`; return; }
-  body.innerHTML=rows.map((r,i)=>{
-    const rank=i+1, cls=rank===1?"r1":rank===2?"r2":rank===3?"r3":"";
-    return `<tr class="${cls}">
-      <td>${rb(rank)}</td>
-      <td>${r.p}</td>
+
+  const sorted = Object.values(m).sort((a,b) => b.w1-a.w1 || b.w2-a.w2 || b.w3-a.w3);
+
+  // Group into rank tiers — players with identical (w1,w2,w3) share a tier
+  const tiers = [];
+  let i = 0;
+  while(i < sorted.length) {
+    const ref = sorted[i];
+    const group = [];
+    while(i < sorted.length) {
+      const x = sorted[i];
+      if(x.w1===ref.w1 && x.w2===ref.w2 && x.w3===ref.w3) { group.push(x); i++; }
+      else break;
+    }
+    tiers.push(group);
+  }
+
+  const body = el(tbodyId);
+  if(!tiers.length){ body.innerHTML=`<tr class="empty"><td colspan="5">No data yet</td></tr>`; return; }
+
+  let rank = 1;
+  body.innerHTML = tiers.map(group => {
+    const r = group[0];
+    const cls = rank===1?"r1":rank===2?"r2":rank===3?"r3":"";
+    const badge = rb(rank);
+    let playerCell;
+    if(group.length === 1) {
+      playerCell = r.p + gtag(r.p);
+    } else {
+      playerCell = `<strong>${group.length} Tied</strong><span class="tied-names">${group.map(x=>x.p+gtag(x.p)).join(" &nbsp;&bull;&nbsp; ")}</span>`;
+    }
+    const row = `<tr class="${cls}">
+      <td>${badge}</td>
+      <td>${playerCell}</td>
       <td class="tc">${r.w1||"—"}</td>
       <td class="tc">${r.w2||"—"}</td>
       <td class="tc">${r.w3||"—"}</td>
-      <td class="amt">${fmt$(r.earn)}</td>
     </tr>`;
+    rank += group.length;
+    return row;
   }).join("");
-}
-
-// ═══════════════════════════════════════════════════
-// SPECIALTY
-// ═══════════════════════════════════════════════════
-function renderSpecialty(){
-  const top=(arr,key,filter)=>{
-    const m=arr.filter(filter).reduce((o,a)=>{ o[a[key]]=(o[a[key]]||0)+1; return o;},{});
-    const s=Object.entries(m).sort((a,b)=>b[1]-a[1]);
-    return s.length?{name:s[0][0],count:s[0][1]}:null;
-  };
-  const f9 = top(ACHIEVEMENTS,"player",a=>a.cat.includes("Front 9")&&a.pl==="1");
-  const b9 = top(ACHIEVEMENTS,"player",a=>a.cat.includes("Back 9")&&a.pl==="1");
-  const ld = top(ACHIEVEMENTS,"player",a=>a.cat.includes("Long Drive"));
-  const kp = top(ACHIEVEMENTS,"player",a=>a.cat==="Closest to the Pin");
-
-  const putts=RESULTS.reduce((m,r)=>{ m[r.player]=m[r.player]||{s:0,c:0}; m[r.player].s+=r.putts; m[r.player].c++; return m;},{});
-  const lp=Object.entries(putts).map(([n,v])=>({name:n,avg:v.s/v.c})).sort((a,b)=>a.avg-b.avg)[0];
-
-  const sk=Object.entries(SKINS.reduce((m,s)=>{ m[s.player]=(m[s.player]||0)+s.total; return m;},{})).sort((a,b)=>b[1]-a[1]);
-  const skTop=sk.length?{name:sk[0][0],count:sk[0][1]}:null;
-
-  const specs=[
-    {icon:"🌅",lbl:"Front 9 Wins",    name:f9?.name||"—",  sub:f9?`${f9.count} win${f9.count>1?"s":""}`:""},
-    {icon:"🌆",lbl:"Back 9 Wins",     name:b9?.name||"—",  sub:b9?`${b9.count} win${b9.count>1?"s":""}`:""},
-    {icon:"💨",lbl:"Long Drives",      name:ld?.name||"—",  sub:ld?`${ld.count} drive${ld.count>1?"s":""}`:""},
-    {icon:"🎱",lbl:"Lowest Avg Putts", name:lp?.name||"—",  sub:lp?`${lp.avg.toFixed(1)} avg`:""},
-    {icon:"🎯",lbl:"Most Skins",       name:skTop?.name||"—",sub:skTop?`${skTop.count} skins`:""},
-    {icon:"📍",lbl:"Most KP Wins",     name:kp?.name||"—",  sub:kp?`${kp.count} win${kp.count>1?"s":""}`:""},
-  ];
-  $("spec-grid").innerHTML=specs.map(s=>`
-    <div class="spec-card">
-      <div class="spec-icon">${s.icon}</div>
-      <div>
-        <div class="spec-lbl">${s.lbl}</div>
-        <div class="spec-name">${s.name}</div>
-        ${s.sub?`<div class="spec-sub">${s.sub}</div>`:""}
-      </div>
-    </div>`).join("");
 }
 
 // ═══════════════════════════════════════════════════
 // MONEY LIST
 // ═══════════════════════════════════════════════════
-function renderMoney(){
-  const rows=Object.entries(moneyMap())
-    .map(([p,v])=>({p,ach:v.ach,skins:v.skins,total:v.ach+v.skins}))
-    .sort((a,b)=>b.total-a.total).slice(0,20);
-  $("money-body").innerHTML=rows.map((r,i)=>{
-    const rank=i+1;
-    const cls=rank===1?"rm":rank===2?"r2":rank===3?"r3":"";
+function renderMoney() {
+  const achMap={};
+  ACHIEVEMENTS.forEach(a=>{ achMap[a.player]=(achMap[a.player]||0)+a.amt; });
+  let rows = Object.entries(achMap).map(([p,t])=>({player:p,total:t})).sort((a,b)=>b.total-a.total).slice(0,20);
+  const isSorted = SORT.money.col !== null;
+  rows = applySort(rows,"money");
+  el("money-body").innerHTML = rows.map((r,i) => {
+    const rank = i+1;
+    const cls = !isSorted && rank===1?"rm":!isSorted&&rank===2?"r2":!isSorted&&rank===3?"r3":"";
+    const badge = rb(rank);
     return `<tr class="${cls}">
-      <td>${rb(rank)}</td>
-      <td><strong>${r.p}</strong>${gtag(r.p)}</td>
-      <td>${fmt$(r.ach)}</td>
-      <td>${fmt$(r.skins)}</td>
-      <td><strong>${fmt$(r.total)}</strong></td>
+      <td>${badge}</td>
+      <td><strong>${r.player}</strong>${gtag(r.player)}</td>
+      <td class="tr amt"><strong>${fmt$(r.total)}</strong></td>
     </tr>`;
   }).join("");
+  updateSortHeaders("tbl-money","money");
 }
 
 // ═══════════════════════════════════════════════════
-// ACHIEVEMENTS TABLE
+// ACHIEVEMENTS — grouped sub-tables
 // ═══════════════════════════════════════════════════
-function populateAchFilters(){
-  const opts=(sel,vals,label)=>vals.forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=label?label(v):v;$(sel).appendChild(o);});
-  opts("af-t",[...new Set(ACHIEVEMENTS.map(a=>a.tid))].sort(),tName);
-  opts("af-p",[...new Set(ACHIEVEMENTS.map(a=>a.player))].sort());
-  opts("af-c",[...new Set(ACHIEVEMENTS.map(a=>a.cat))].sort());
+function populateAchFilters() {
+  const tids = [...new Set(ACHIEVEMENTS.map(a=>a.tid))].sort().reverse();
+  // "All Tournaments" first
+  const allOpt = document.createElement("option"); allOpt.value=""; allOpt.textContent="All Tournaments";
+  el("ach-t").appendChild(allOpt);
+  tids.forEach(t => {
+    const o=document.createElement("option"); o.value=t; o.textContent=tName(t);
+    el("ach-t").appendChild(o);
+  });
+  el("ach-t").value = MOST_RECENT_TID;
+
+  const players=[...new Set(ACHIEVEMENTS.map(a=>a.player))].sort();
+  players.forEach(p=>{ const o=document.createElement("option");o.value=p;o.textContent=p;el("ach-p").appendChild(o); });
 }
-function renderAch(){
-  const tf=$("af-t").value, pf=$("af-p").value, cf=$("af-c").value;
-  const rows=ACHIEVEMENTS.filter(a=>(!tf||a.tid===tf)&&(!pf||a.player===pf)&&(!cf||a.cat===cf));
-  const pill=pl=>{
-    if(pl==="1")return`<span class="pill p1">🥇 1st</span>`;
-    if(pl==="2")return`<span class="pill p2">🥈 2nd</span>`;
-    if(pl==="3")return`<span class="pill p3">🥉 3rd</span>`;
-    return`<span class="pill pw">✅ Winner</span>`;
-  };
-  const cls=pl=>pl==="1"?"r1":pl==="2"?"r2":pl==="3"?"r3":pl==="Winner"?"rw":"";
-  $("ach-body").innerHTML=!rows.length
-    ?`<tr class="empty"><td colspan="5">No results match filters</td></tr>`
-    :rows.map(a=>`<tr class="${cls(a.pl)}">
-        <td>${tName(a.tid)}</td>
-        <td>${a.player}${gtag(a.player)}</td>
-        <td>${a.cat}</td>
+
+function renderAchCat(cat, tbodyId) {
+  const tf=el("ach-t").value, pf=el("ach-p").value;
+  const rows=ACHIEVEMENTS.filter(a=>a.cat===cat&&(!tf||a.tid===tf)&&(!pf||a.player===pf));
+  el(tbodyId).innerHTML=!rows.length
+    ?`<tr class="empty"><td colspan="3">No data for current filters</td></tr>`
+    :rows.map(a=>`<tr class="${plCls(a.pl)}">
         <td class="tc">${pill(a.pl)}</td>
-        <td class="amt">${fmt$(a.amt)}</td>
+        <td>${a.player}${gtag(a.player)}</td>
+        <td class="tr amt">${fmt$(a.amt)}</td>
       </tr>`).join("");
 }
 
-// ═══════════════════════════════════════════════════
-// SKINS TABLE
-// ═══════════════════════════════════════════════════
-function populateSkinsFilters(){
-  const opts=(sel,vals,label)=>vals.forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=label?label(v):v;$(sel).appendChild(o);});
-  opts("sf-t",[...new Set(SKINS.map(s=>s.tid))].sort(),tName);
-  opts("sf-p",[...new Set(SKINS.map(s=>s.player))].sort());
-  opts("sf-c",[...new Set(SKINS.map(s=>s.cat))].sort());
+function renderAllAch() {
+  renderAchCat("Flight A - Overall",    "ac-aov");
+  renderAchCat("Flight B - Overall",    "ac-bov");
+  renderAchCat("Flight A - Front 9",    "ac-af9");
+  renderAchCat("Flight B - Front 9",    "ac-bf9");
+  renderAchCat("Flight A - Back 9",     "ac-ab9");
+  renderAchCat("Flight B - Back 9",     "ac-bb9");
+  renderAchCat("Flight A - Long Drive", "ac-ald");
+  renderAchCat("Flight B - Long Drive", "ac-bld");
+  renderAchCat("Low Putts",             "ac-lp");
+  renderAchCat("Closest to the Pin",    "ac-kp");
 }
-function renderSkins(){
-  const tf=$("sf-t").value, pf=$("sf-p").value, cf=$("sf-c").value;
-  const rows=SKINS.filter(s=>(!tf||s.tid===tf)&&(!pf||s.player===pf)&&(!cf||s.cat===cf))
-    .sort((a,b)=>b.total-a.total);
-  $("skins-body").innerHTML=!rows.length
+
+// ═══════════════════════════════════════════════════
+// SKINS
+// ═══════════════════════════════════════════════════
+function populateSkinsFilters() {
+  const tids=[...new Set(SKINS.map(s=>s.tid))].sort().reverse();
+  const allOpt=document.createElement("option"); allOpt.value=""; allOpt.textContent="All Tournaments";
+  el("sf-t").appendChild(allOpt);
+  tids.forEach(t=>{ const o=document.createElement("option");o.value=t;o.textContent=tName(t);el("sf-t").appendChild(o); });
+  el("sf-t").value = MOST_RECENT_TID;
+
+  [...new Set(SKINS.map(s=>s.player))].sort().forEach(p=>{ const o=document.createElement("option");o.value=p;o.textContent=p;el("sf-p").appendChild(o); });
+  [...new Set(SKINS.map(s=>s.cat))].sort().forEach(c=>{ const o=document.createElement("option");o.value=c;o.textContent=c;el("sf-c").appendChild(o); });
+}
+
+function renderSkins() {
+  const tf=el("sf-t").value, pf=el("sf-p").value, cf=el("sf-c").value;
+  let rows=SKINS.filter(s=>(!tf||s.tid===tf)&&(!pf||s.player===pf)&&(!cf||s.cat===cf));
+  if(!SORT.skins.col) rows=[...rows].sort((a,b)=>b.total-a.total);
+  else rows=applySort(rows,"skins");
+  el("skins-body").innerHTML=!rows.length
     ?`<tr class="empty"><td colspan="5">No results match filters</td></tr>`
     :rows.map(s=>`<tr>
         <td>${tName(s.tid)}</td>
         <td>${s.player}${gtag(s.player)}</td>
         <td>${s.cat}</td>
         <td class="tc"><strong>${s.total}</strong></td>
-        <td class="amt">${fmt$(s.amt)}</td>
+        <td class="tr amt">${fmt$(s.amt)}</td>
       </tr>`).join("");
+  updateSortHeaders("tbl-skins","skins");
 }
 
 // ═══════════════════════════════════════════════════
-// RESULTS TABLE
+// RESULTS
 // ═══════════════════════════════════════════════════
-function populateResultsFilters(){
-  [...new Set(RESULTS.map(r=>r.tid))].sort().forEach(t=>{
-    const o=document.createElement("option");o.value=t;o.textContent=tName(t);$("rf-t").appendChild(o);
-  });
+function populateResultsFilters() {
+  const tids=[...new Set(RESULTS.map(r=>r.tid))].sort().reverse();
+  const allOpt=document.createElement("option"); allOpt.value=""; allOpt.textContent="All Tournaments";
+  el("rf-t").appendChild(allOpt);
+  tids.forEach(t=>{ const o=document.createElement("option");o.value=t;o.textContent=tName(t);el("rf-t").appendChild(o); });
+  el("rf-t").value = MOST_RECENT_TID;
 }
-function renderResults(){
-  const tf=$("rf-t").value, ff=$("rf-f").value;
-  const rows=RESULTS.filter(r=>(!tf||r.tid===tf)&&(!ff||r.flight===ff))
-    .sort((a,b)=>a.flight!==b.flight?(a.flight<b.flight?-1:1):a.net-b.net);
-  const bestA=Math.min(...rows.filter(r=>r.flight==="A").map(r=>r.net));
-  const bestB=Math.min(...rows.filter(r=>r.flight==="B").map(r=>r.net));
-  $("res-body").innerHTML=!rows.length
+
+function renderResults() {
+  const tf=el("rf-t").value, ff=el("rf-f").value;
+  let rows=RESULTS.filter(r=>(!tf||r.tid===tf)&&(!ff||r.flight===ff));
+  const isSorted=SORT.results.col!==null;
+  if(!isSorted) rows=[...rows].sort((a,b)=>a.flight<b.flight?-1:a.flight>b.flight?1:a.net-b.net);
+  else rows=applySort(rows,"results");
+
+  const bestA=Math.min(...rows.filter(r=>r.flight==="A").map(r=>r.net).filter(isFinite));
+  const bestB=Math.min(...rows.filter(r=>r.flight==="B").map(r=>r.net).filter(isFinite));
+
+  el("res-body").innerHTML=!rows.length
     ?`<tr class="empty"><td colspan="8">No results match filters</td></tr>`
     :rows.map(r=>{
-      const winner=(r.flight==="A"&&r.net===bestA)||(r.flight==="B"&&r.net===bestB);
-      return`<tr class="${winner?"r1":""}">
+      const winner=!isSorted&&((r.flight==="A"&&r.net===bestA)||(r.flight==="B"&&r.net===bestB));
+      return `<tr class="${winner?"r1":""}">
         <td>${r.player}${gtag(r.player)}</td>
-        <td class="tc"><span class="fbadge" style="font-size:.6rem;padding:2px 7px;">${r.flight}</span></td>
+        <td class="tc"><span class="fbadge${r.flight==="B"?" b-b":""}" style="font-size:.6rem;padding:2px 7px;">${r.flight}</span></td>
         <td class="tc">${r.hcp}</td>
         <td class="tc">${r.gross}</td>
         <td class="tc"><strong>${r.net}</strong></td>
@@ -586,21 +800,22 @@ function renderResults(){
         <td class="tc">${r.putts}</td>
       </tr>`;
     }).join("");
+  updateSortHeaders("tbl-results","results");
 }
 
 // ═══════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
   renderKPIs();
   renderLB("A","lb-a");
   renderLB("B","lb-b");
-  renderSpecialty();
   renderMoney();
-  populateAchFilters(); renderAch();
+  populateAchFilters();  renderAllAch();
   populateSkinsFilters(); renderSkins();
   populateResultsFilters(); renderResults();
+  bindSortHeaders();
 });
 </script>
 </body>
