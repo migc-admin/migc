@@ -97,7 +97,6 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
 </style>
 </head>
 <body>
-
 <header class="hdr">
   <div class="hdr-top">
     <div class="hdr-title">
@@ -121,12 +120,10 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
 <!-- DASHBOARD TAB -->
 <div id="tab-dashboard" class="tab-pane active">
 <main class="main">
-
   <section class="mb">
     <div class="sec-hdr"><span>&#128202;</span><h2>Season KPIs</h2><div class="line"></div></div>
     <div class="kpi-grid" id="kpi-grid"></div>
   </section>
-
   <section class="mb">
     <div class="sec-hdr"><span>&#127942;</span><h2>Flight Leaderboards</h2><div class="line"></div></div>
     <div class="two-col">
@@ -140,7 +137,6 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
       </div>
     </div>
   </section>
-
   <section class="mb">
     <div class="sec-hdr"><span>&#128176;</span><h2>Money List</h2><div class="line"></div></div>
     <div class="tcard">
@@ -161,7 +157,6 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
       </table></div>
     </div>
   </section>
-
   <section class="mb">
     <div class="sec-hdr"><span>&#127894;</span><h2>Tournament Achievements</h2><div class="line"></div></div>
     <div class="tcard fbar-standalone">
@@ -215,7 +210,6 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
       </div>
     </div>
   </section>
-
   <section class="mb">
     <div class="sec-hdr"><span>&#127919;</span><h2>Tournament Skins</h2><div class="line"></div></div>
     <div class="tcard">
@@ -236,7 +230,6 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
       </table></div>
     </div>
   </section>
-
   <section class="mb">
     <div class="sec-hdr"><span>&#128203;</span><h2>Tournament Results</h2><div class="line"></div></div>
     <div class="tcard">
@@ -262,7 +255,6 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
       </table></div>
     </div>
   </section>
-
 </main>
 </div>
 
@@ -305,7 +297,7 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
 </main>
 </div>
 
-<footer>MIGC 2026 Season &nbsp;&middot;&nbsp; Dashboard v1.5 &nbsp;&middot;&nbsp; Updated May 2026</footer>
+<footer>MIGC 2026 Season &nbsp;&middot;&nbsp; Dashboard v1.6 &nbsp;&middot;&nbsp; Updated May 2026</footer>
 
 <script>
 // ═══════════════════════════════════════════════════════════════
@@ -361,15 +353,20 @@ const PLAYERS = [
 ];
 
 const TOURNAMENTS = [
-  {id:"2026_01",name:"CCRB",         date:"Jan 31, 2026",course:"CCRB"},
-  {id:"2026_02",name:"Cross Creek",  date:"Feb 22, 2026",course:"Cross Creek GC"},
-  {id:"2026_03",name:"Sycuan",       date:"Mar 29, 2026",course:"Sycuan Resort"},
-  {id:"2026_04",name:"The Vineyard", date:"Apr 19, 2026",course:"The Vineyard at Escondido"},
-  {id:"2026_05",name:"The Links",    date:"May 17, 2026",course:"The Links at Lakehouse"},
-  {id:"2026_06",name:"Native Oaks",  date:"Jun 28, 2026",course:"Native Oaks"},
+  {id:"2026_01",name:"CCRB",          date:"Jan 31, 2026", course:"CCRB"},
+  {id:"2026_02",name:"Cross Creek",   date:"Feb 22, 2026", course:"Cross Creek GC"},
+  {id:"2026_03",name:"Sycuan",        date:"Mar 29, 2026", course:"Sycuan Resort"},
+  {id:"2026_04",name:"The Vineyard",  date:"Apr 19, 2026", course:"The Vineyard at Escondido"},
+  {id:"2026_05",name:"The Links",     date:"May 17, 2026", course:"The Links at Lakehouse"},
+  {id:"2026_06",name:"Native Oaks",   date:"Jun 28, 2026", course:"Native Oaks"},
+  {id:"2026_07",name:"Coronado",      date:"Jul 12, 2026", course:"Coronado Golf Club"},
+  {id:"2026_08",name:"CCRB (Aug)",    date:"Aug 2, 2026",  course:"CCRB"},
+  {id:"2026_09",name:"San Vicente",   date:"Aug 30, 2026", course:"San Vicente"},
+  {id:"2026_10",name:"Arrowood",      date:"Sep 20, 2026", course:"Arrowood Golf Club"},
+  {id:"2026_11",name:"Golf Club of CA",date:"Oct 25, 2026",course:"Golf Club of California"},
+  {id:"2026_12",name:"Twin Oaks",     date:"Nov 15, 2026", course:"Twin Oaks Golf Club"},
 ];
 
-// Putts = null means TBD (displayed as —)
 const RESULTS = [
   // 2026_01 — CCRB
   {tid:"2026_01",pid:36,player:"Taylor Yates",  flight:"A",hcp:9, gross:79, net:70,f9:36,b9:43,putts:null},
@@ -433,6 +430,35 @@ const RESULTS = [
   {tid:"2026_02",pid:22,player:"Mark Horgan",    flight:"B",hcp:22,gross:115,net:93,f9:57,b9:58,putts:null},
   {tid:"2026_02",pid:23,player:"Max O'Brien",    flight:"B",hcp:22,gross:121,net:99,f9:61,b9:60,putts:null},
   {tid:"2026_02",pid:25,player:"Mike Pena",      flight:"B",hcp:36,gross:140,net:104,f9:65,b9:75,putts:null},
+  // 2026_03 — Sycuan
+  {tid:"2026_03",pid:8, player:"Colin Chang",    flight:"A",hcp:20,gross:92, net:72, f9:46,b9:46,putts:null},
+  {tid:"2026_03",pid:6, player:"Carlos Bouloy",  flight:"A",hcp:21,gross:93, net:72, f9:46,b9:47,putts:null},
+  {tid:"2026_03",pid:29,player:"Paul Toledo",    flight:"A",hcp:20,gross:94, net:74, f9:47,b9:47,putts:null},
+  {tid:"2026_03",pid:7, player:"Chris Chang",    flight:"A",hcp:17,gross:92, net:75, f9:46,b9:46,putts:null},
+  {tid:"2026_03",pid:32,player:"Spencer Higgins",flight:"A",hcp:10,gross:90, net:80, f9:43,b9:47,putts:null},
+  {tid:"2026_03",pid:20,player:"Kevin Vargas",   flight:"A",hcp:7, gross:87, net:80, f9:43,b9:44,putts:null},
+  {tid:"2026_03",pid:12,player:"Darrick Sogabe", flight:"A",hcp:20,gross:100,net:80, f9:50,b9:50,putts:null},
+  {tid:"2026_03",pid:27,player:"Nick Harris",    flight:"A",hcp:20,gross:100,net:80, f9:53,b9:47,putts:null},
+  {tid:"2026_03",pid:15,player:"John Nothdurft", flight:"A",hcp:15,gross:98, net:83, f9:49,b9:49,putts:null},
+  {tid:"2026_03",pid:34,player:"Tai Ho",         flight:"A",hcp:12,gross:95, net:83, f9:50,b9:45,putts:null},
+  {tid:"2026_03",pid:17,player:"JP Hill",        flight:"A",hcp:13,gross:96, net:83, f9:51,b9:45,putts:null},
+  {tid:"2026_03",pid:3, player:"Andy Pendleton", flight:"A",hcp:8, gross:97, net:89, f9:50,b9:47,putts:null},
+  {tid:"2026_03",pid:13,player:"David Wu",       flight:"A",hcp:21,gross:118,net:97, f9:64,b9:54,putts:null},
+  {tid:"2026_03",pid:5, player:"Bryan Cappelli", flight:"A",hcp:14,gross:119,net:105,f9:59,b9:60,putts:null},
+  {tid:"2026_03",pid:24,player:"Mike Paguyo",    flight:"B",hcp:26,gross:92, net:66, f9:50,b9:42,putts:null},
+  {tid:"2026_03",pid:1, player:"Art Hernandez",  flight:"B",hcp:22,gross:90, net:68, f9:44,b9:46,putts:null},
+  {tid:"2026_03",pid:26,player:"Mikel Hodges",   flight:"B",hcp:20,gross:92, net:72, f9:45,b9:47,putts:null},
+  {tid:"2026_03",pid:28,player:"Paul Hsieh",     flight:"B",hcp:31,gross:103,net:72, f9:53,b9:50,putts:null},
+  {tid:"2026_03",pid:35,player:"Tam Tran",       flight:"B",hcp:19,gross:96, net:77, f9:49,b9:47,putts:null},
+  {tid:"2026_03",pid:33,player:"Steve Chiang",   flight:"B",hcp:21,gross:99, net:78, f9:51,b9:48,putts:null},
+  {tid:"2026_03",pid:19,player:"Kevin Taylor",   flight:"B",hcp:24,gross:102,net:78, f9:52,b9:50,putts:null},
+  {tid:"2026_03",pid:39,player:"Charles Tran",   flight:"B",hcp:29,gross:107,net:78, f9:54,b9:53,putts:null},
+  {tid:"2026_03",pid:10,player:"Danny Lopez",    flight:"B",hcp:20,gross:101,net:81, f9:48,b9:53,putts:null},
+  {tid:"2026_03",pid:30,player:"Ken Sogabe",     flight:"B",hcp:32,gross:113,net:81, f9:58,b9:55,putts:null},
+  {tid:"2026_03",pid:9, player:"Colin Harrison", flight:"B",hcp:19,gross:100,net:81, f9:52,b9:48,putts:null},
+  {tid:"2026_03",pid:2, player:"Adrianna Moore", flight:"B",hcp:36,gross:122,net:86, f9:63,b9:59,putts:null},
+  {tid:"2026_03",pid:22,player:"Mark Horgan",    flight:"B",hcp:29,gross:115,net:86, f9:58,b9:57,putts:null},
+  {tid:"2026_03",pid:25,player:"Mike Pena",      flight:"B",hcp:36,gross:130,net:94, f9:69,b9:61,putts:null},
   // 2026_04 — The Vineyard (deduped)
   {tid:"2026_04",pid:3, player:"Andy Pendleton", flight:"A",hcp:9, gross:89, net:80,f9:46,b9:43,putts:29},
   {tid:"2026_04",pid:7, player:"Chris Chang",    flight:"A",hcp:15,gross:86, net:71,f9:45,b9:41,putts:40},
@@ -551,6 +577,32 @@ const ACHIEVEMENTS = [
   {tid:"2026_02",pid:10,player:"Danny Lopez",    cat:"Closest to the Pin",    pl:"Winner",amt:30},
   {tid:"2026_02",pid:10,player:"Danny Lopez",    cat:"Closest to the Pin",    pl:"Winner",amt:30},
   {tid:"2026_02",pid:24,player:"Mike Paguyo",    cat:"Closest to the Pin",    pl:"Winner",amt:30},
+  // 2026_03 — Sycuan
+  {tid:"2026_03",pid:6, player:"Carlos Bouloy",  cat:"Flight A - Overall",    pl:"1",     amt:56},
+  {tid:"2026_03",pid:8, player:"Colin Chang",    cat:"Flight A - Overall",    pl:"1",     amt:56},
+  {tid:"2026_03",pid:29,player:"Paul Toledo",    cat:"Flight A - Overall",    pl:"3",     amt:28},
+  {tid:"2026_03",pid:24,player:"Mike Paguyo",    cat:"Flight B - Overall",    pl:"1",     amt:70},
+  {tid:"2026_03",pid:1, player:"Art Hernandez",  cat:"Flight B - Overall",    pl:"2",     amt:42},
+  {tid:"2026_03",pid:26,player:"Mikel Hodges",   cat:"Flight B - Overall",    pl:"3",     amt:14},
+  {tid:"2026_03",pid:28,player:"Paul Hsieh",     cat:"Flight B - Overall",    pl:"3",     amt:14},
+  {tid:"2026_03",pid:29,player:"Paul Toledo",    cat:"Flight A - Front 9",    pl:"1",     amt:28},
+  {tid:"2026_03",pid:6, player:"Carlos Bouloy",  cat:"Flight A - Front 9",    pl:"2",     amt:14},
+  {tid:"2026_03",pid:26,player:"Mikel Hodges",   cat:"Flight B - Front 9",    pl:"1",     amt:28},
+  {tid:"2026_03",pid:24,player:"Mike Paguyo",    cat:"Flight B - Front 9",    pl:"2",     amt:4.65},
+  {tid:"2026_03",pid:1, player:"Art Hernandez",  cat:"Flight B - Front 9",    pl:"2",     amt:4.65},
+  {tid:"2026_03",pid:28,player:"Paul Hsieh",     cat:"Flight B - Front 9",    pl:"2",     amt:4.65},
+  {tid:"2026_03",pid:8, player:"Colin Chang",    cat:"Flight A - Back 9",     pl:"1",     amt:28},
+  {tid:"2026_03",pid:6, player:"Carlos Bouloy",  cat:"Flight A - Back 9",     pl:"2",     amt:7},
+  {tid:"2026_03",pid:27,player:"Nick Harris",    cat:"Flight A - Back 9",     pl:"2",     amt:7},
+  {tid:"2026_03",pid:24,player:"Mike Paguyo",    cat:"Flight B - Back 9",     pl:"1",     amt:28},
+  {tid:"2026_03",pid:1, player:"Art Hernandez",  cat:"Flight B - Back 9",     pl:"2",     amt:14},
+  {tid:"2026_03",pid:1, player:"Art Hernandez",  cat:"Low Putts",             pl:"Winner",amt:28},
+  {tid:"2026_03",pid:32,player:"Spencer Higgins",cat:"Flight A - Long Drive", pl:"Winner",amt:28},
+  {tid:"2026_03",pid:24,player:"Mike Paguyo",    cat:"Flight B - Long Drive", pl:"Winner",amt:28},
+  {tid:"2026_03",pid:20,player:"Kevin Vargas",   cat:"Closest to the Pin",    pl:"Winner",amt:35},
+  {tid:"2026_03",pid:26,player:"Mikel Hodges",   cat:"Closest to the Pin",    pl:"Winner",amt:35},
+  {tid:"2026_03",pid:8, player:"Colin Chang",    cat:"Closest to the Pin",    pl:"Winner",amt:35},
+  {tid:"2026_03",pid:2, player:"Adrianna Moore", cat:"Closest to the Pin",    pl:"Winner",amt:35},
   // 2026_04 — The Vineyard
   {tid:"2026_04",pid:29,player:"Paul Toledo",    cat:"Flight A - Overall",    pl:"1",     amt:90},
   {tid:"2026_04",pid:40,player:"Lucas Bouloy",   cat:"Flight A - Overall",    pl:"2",     amt:54},
@@ -628,6 +680,20 @@ const SKINS = [
   {tid:"2026_02",pid:28,player:"Paul Hsieh",      cat:"Flight B - Skins",total:3, amt:36},
   {tid:"2026_02",pid:9, player:"Colin Harrison",  cat:"Flight B - Skins",total:3, amt:36},
   {tid:"2026_02",pid:10,player:"Danny Lopez",     cat:"Flight B - Skins",total:7, amt:84},
+  // 2026_03
+  {tid:"2026_03",pid:34,player:"Tai Ho",          cat:"Flight A - Skins",total:2, amt:28},
+  {tid:"2026_03",pid:29,player:"Paul Toledo",     cat:"Flight A - Skins",total:2, amt:28},
+  {tid:"2026_03",pid:15,player:"John Nothdurft",  cat:"Flight A - Skins",total:3, amt:42},
+  {tid:"2026_03",pid:8, player:"Colin Chang",     cat:"Flight A - Skins",total:3, amt:42},
+  {tid:"2026_03",pid:27,player:"Nick Harris",     cat:"Flight A - Skins",total:3, amt:42},
+  {tid:"2026_03",pid:6, player:"Carlos Bouloy",   cat:"Flight A - Skins",total:5, amt:70},
+  {tid:"2026_03",pid:35,player:"Tam Tran",        cat:"Flight B - Skins",total:1, amt:14},
+  {tid:"2026_03",pid:2, player:"Adrianna Moore",  cat:"Flight B - Skins",total:1, amt:14},
+  {tid:"2026_03",pid:19,player:"Kevin Taylor",    cat:"Flight B - Skins",total:1, amt:14},
+  {tid:"2026_03",pid:26,player:"Mikel Hodges",    cat:"Flight B - Skins",total:2, amt:28},
+  {tid:"2026_03",pid:39,player:"Charles Tran",    cat:"Flight B - Skins",total:2, amt:28},
+  {tid:"2026_03",pid:24,player:"Mike Paguyo",     cat:"Flight B - Skins",total:4, amt:56},
+  {tid:"2026_03",pid:28,player:"Paul Hsieh",      cat:"Flight B - Skins",total:7, amt:98},
   // 2026_04
   {tid:"2026_04",pid:34,player:"Tai Ho",          cat:"Flight A - Skins",total:2, amt:36},
   {tid:"2026_04",pid:29,player:"Paul Toledo",     cat:"Flight A - Skins",total:16,amt:288},
@@ -652,7 +718,7 @@ const SKINS = [
 ];
 
 // ═══════════════════════════════════════════════════════════════
-// CONSTANTS & HELPERS
+// HELPERS & CONSTANTS
 // ═══════════════════════════════════════════════════════════════
 const MOST_RECENT_TID = [...new Set([...RESULTS.map(r=>r.tid),...ACHIEVEMENTS.map(a=>a.tid)])].sort().pop();
 const tName   = id => (TOURNAMENTS.find(t=>t.id===id)||{name:id}).name;
@@ -661,88 +727,46 @@ const el      = id => document.getElementById(id);
 const fmt$    = n => "$"+Number(n).toFixed(2);
 const gtag    = name => isGuest(name)?'<span class="gtag">Guest</span>':"";
 const median  = arr => { if(!arr.length)return null; const s=[...arr].sort((a,b)=>a-b),m=Math.floor(s.length/2); return s.length%2?s[m]:(s[m-1]+s[m])/2; };
-
-const pill = pl => {
-  if(pl==="1")return'<span class="pill p1">&#127945; 1st</span>';
-  if(pl==="2")return'<span class="pill p2">&#127946; 2nd</span>';
-  if(pl==="3")return'<span class="pill p3">&#127947; 3rd</span>';
-  return'<span class="pill pw">&#10003; Winner</span>';
-};
-const rb = n => `<span class="rbadge ${n===1?"rb1":n===2?"rb2":n===3?"rb3":"rbo"}">${n}</span>`;
+const pill    = pl => pl==="1"?'<span class="pill p1">&#127945; 1st</span>':pl==="2"?'<span class="pill p2">&#127946; 2nd</span>':pl==="3"?'<span class="pill p3">&#127947; 3rd</span>':'<span class="pill pw">&#10003; Winner</span>';
+const rb      = n  => `<span class="rbadge ${n===1?"rb1":n===2?"rb2":n===3?"rb3":"rbo"}">${n}</span>`;
 const plOrder = pl => pl==="1"?1:pl==="2"?2:pl==="3"?3:4;
-
-function guestLast(a,b){
-  const ga=isGuest(a.player||a.p)?1:0,gb=isGuest(b.player||b.p)?1:0;
-  return ga-gb||(a.player||a.p).localeCompare(b.player||b.p);
-}
+function guestLast(a,b){const ga=isGuest(a.player||a.p)?1:0,gb=isGuest(b.player||b.p)?1:0;return ga-gb||(a.player||a.p).localeCompare(b.player||b.p);}
 
 // ═══════════════════════════════════════════════════════════════
 // SORT
 // ═══════════════════════════════════════════════════════════════
 const SORT={money:{col:null,dir:"asc",type:"num"},skins:{col:null,dir:"asc",type:"str"},results:{col:null,dir:"asc",type:"str"},ps:{col:null,dir:"asc",type:"str"}};
-
-function applySort(rows,key){
-  const s=SORT[key];if(!s.col)return rows;
-  return[...rows].sort((a,b)=>{
-    const av=a[s.col],bv=b[s.col];
-    return s.type==="num"?(s.dir==="asc"?av-bv:bv-av):(s.dir==="asc"?String(av||"").localeCompare(String(bv||"")):String(bv||"").localeCompare(String(av||"")));
-  });
-}
-function updateSortHdrs(tableId,key){
-  document.querySelectorAll(`#${tableId} thead th.sortable`).forEach(th=>{
-    const s=SORT[key],icon=th.querySelector(".sort-icon");
-    th.classList.remove("sort-asc","sort-desc");icon.textContent="&#8645;";
-    if(s.col===th.dataset.key){th.classList.add(s.dir==="asc"?"sort-asc":"sort-desc");icon.textContent=s.dir==="asc"?"&#9650;":"&#9660;";}
-  });
-}
-function bindSort(){
-  document.querySelectorAll("thead th.sortable").forEach(th=>{
-    th.addEventListener("click",()=>{
-      const tbl=th.dataset.table,key=th.dataset.key,type=th.dataset.type,s=SORT[tbl];
-      s.col===key?(s.dir=s.dir==="asc"?"desc":"asc"):(s.col=key,s.dir="asc",s.type=type);
-      ({money:renderMoney,skins:renderSkins,results:renderResults,ps:renderPlayerScoring}[tbl]||function(){})();
-      ({money:"tbl-money",skins:"tbl-skins",results:"tbl-results",ps:"tbl-ps"}[tbl]&&updateSortHdrs({money:"tbl-money",skins:"tbl-skins",results:"tbl-results",ps:"tbl-ps"}[tbl],tbl));
-    });
-  });
-}
+function applySort(rows,key){const s=SORT[key];if(!s.col)return rows;return[...rows].sort((a,b)=>{const av=a[s.col],bv=b[s.col];return s.type==="num"?(s.dir==="asc"?av-bv:bv-av):(s.dir==="asc"?String(av||"").localeCompare(String(bv||"")):String(bv||"").localeCompare(String(av||"")));});}
+function updateSortHdrs(tableId,key){document.querySelectorAll(`#${tableId} thead th.sortable`).forEach(th=>{const s=SORT[key],icon=th.querySelector(".sort-icon");th.classList.remove("sort-asc","sort-desc");icon.textContent="&#8645;";if(s.col===th.dataset.key){th.classList.add(s.dir==="asc"?"sort-asc":"sort-desc");icon.textContent=s.dir==="asc"?"&#9650;":"&#9660;";}});}
+function bindSort(){document.querySelectorAll("thead th.sortable").forEach(th=>{th.addEventListener("click",()=>{const tbl=th.dataset.table,key=th.dataset.key,type=th.dataset.type,s=SORT[tbl];s.col===key?(s.dir=s.dir==="asc"?"desc":"asc"):(s.col=key,s.dir="asc",s.type=type);({money:renderMoney,skins:renderSkins,results:renderResults,ps:renderPlayerScoring}[tbl]||function(){})();const tid={money:"tbl-money",skins:"tbl-skins",results:"tbl-results",ps:"tbl-ps"};if(tid[tbl])updateSortHdrs(tid[tbl],tbl);});});}
 
 // ═══════════════════════════════════════════════════════════════
 // TABS
 // ═══════════════════════════════════════════════════════════════
-function switchTab(name){
-  document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  el('tab-'+name).classList.add('active');
-  el('btn-'+name).classList.add('active');
-  if(name==='insights')renderInsights();
-}
+function switchTab(name){document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));el('tab-'+name).classList.add('active');el('btn-'+name).classList.add('active');if(name==='insights')renderInsights();}
 
 // ═══════════════════════════════════════════════════════════════
 // HEADER
 // ═══════════════════════════════════════════════════════════════
 function renderHeader(){
   const played=[...new Set(RESULTS.map(r=>r.tid))].length;
-  const today=new Date("2026-05-22");
+  const today=new Date();
   const fut=TOURNAMENTS.map(t=>({...t,d:new Date(t.date)})).filter(t=>t.d>today).sort((a,b)=>a.d-b.d);
   el("h-played").textContent=`${played} of ${TOURNAMENTS.length}`;
-  el("h-next").textContent=fut.length?`${fut[0].name} \u00b7 ${fut[0].date}`:"TBD";
+  el("h-next").textContent=fut.length?`${fut[0].name} \u00b7 ${fut[0].date}`:"Season Complete";
 }
 
 // ═══════════════════════════════════════════════════════════════
 // KPIs
 // ═══════════════════════════════════════════════════════════════
 function renderKPIs(){
-  const achMap={};
-  ACHIEVEMENTS.filter(a=>!isGuest(a.player)).forEach(a=>{achMap[a.player]=(achMap[a.player]||0)+a.amt;});
+  const achMap={};ACHIEVEMENTS.filter(a=>!isGuest(a.player)).forEach(a=>{achMap[a.player]=(achMap[a.player]||0)+a.amt;});
   const ml=Object.entries(achMap).sort((a,b)=>b[1]-a[1])[0];
-  const ldMap={};
-  ACHIEVEMENTS.filter(a=>a.cat.includes("Long Drive")).forEach(a=>{ldMap[a.player]=(ldMap[a.player]||0)+1;});
+  const ldMap={};ACHIEVEMENTS.filter(a=>a.cat.includes("Long Drive")).forEach(a=>{ldMap[a.player]=(ldMap[a.player]||0)+1;});
   const ld=Object.entries(ldMap).sort((a,b)=>b[1]-a[1])[0];
-  const ctpMap={};
-  ACHIEVEMENTS.filter(a=>a.cat==="Closest to the Pin").forEach(a=>{ctpMap[a.player]=(ctpMap[a.player]||0)+1;});
+  const ctpMap={};ACHIEVEMENTS.filter(a=>a.cat==="Closest to the Pin").forEach(a=>{ctpMap[a.player]=(ctpMap[a.player]||0)+1;});
   const ctp=Object.entries(ctpMap).sort((a,b)=>b[1]-a[1])[0];
-  const pMap={};
-  RESULTS.filter(r=>r.putts!==null).forEach(r=>{pMap[r.player]=pMap[r.player]||{s:0,c:0};pMap[r.player].s+=r.putts;pMap[r.player].c++;});
+  const pMap={};RESULTS.filter(r=>r.putts!==null).forEach(r=>{pMap[r.player]=pMap[r.player]||{s:0,c:0};pMap[r.player].s+=r.putts;pMap[r.player].c++;});
   const lp=Object.entries(pMap).map(([n,v])=>({n,avg:v.s/v.c})).sort((a,b)=>a.avg-b.avg)[0];
   el("kpi-grid").innerHTML=[
     {icon:"&#128176;",lbl:"Money Leader",    name:ml?ml[0]:"&#8212;",val:ml?fmt$(ml[1]):"&#8212;"},
@@ -760,36 +784,26 @@ function renderInsights(){
   const highG=RESULTS.reduce((b,r)=>r.gross>(b?.gross||0)?r:b,null);
   const lowG =RESULTS.reduce((b,r)=>r.gross<(b?.gross||9999)?r:b,null);
   const lowP =resWithPutts.length?resWithPutts.reduce((b,r)=>r.putts<(b?.putts||9999)?r:b,null):null;
-  const attMap={};
-  RESULTS.forEach(r=>{attMap[r.player]=attMap[r.player]||new Set();attMap[r.player].add(r.tid);});
+  const attMap={};RESULTS.forEach(r=>{attMap[r.player]=attMap[r.player]||new Set();attMap[r.player].add(r.tid);});
   const attSorted=Object.entries(attMap).sort((a,b)=>b[1].size-a[1].size);
   const maxAtt=attSorted[0][1].size;
   const attTied=attSorted.filter(x=>x[1].size===maxAtt).map(x=>x[0]);
-  const hcpHist={};
-  RESULTS.forEach(r=>{hcpHist[r.player]=hcpHist[r.player]||[];hcpHist[r.player].push({tid:r.tid,hcp:r.hcp});});
-  const hcpChanges=Object.entries(hcpHist).filter(([,recs])=>recs.length>=2).map(([p,recs])=>{
-    recs.sort((a,b)=>a.tid.localeCompare(b.tid));
-    return{player:p,change:recs[0].hcp-recs[recs.length-1].hcp,first:recs[0].hcp,last:recs[recs.length-1].hcp};
-  });
+  const hcpHist={};RESULTS.forEach(r=>{hcpHist[r.player]=hcpHist[r.player]||[];hcpHist[r.player].push({tid:r.tid,hcp:r.hcp});});
+  const hcpChanges=Object.entries(hcpHist).filter(([,recs])=>recs.length>=2).map(([p,recs])=>{recs.sort((a,b)=>a.tid.localeCompare(b.tid));return{player:p,change:recs[0].hcp-recs[recs.length-1].hcp};});
   const maxImp=hcpChanges.length?Math.max(...hcpChanges.map(x=>x.change)):null;
   const maxWor=hcpChanges.length?Math.min(...hcpChanges.map(x=>x.change)):null;
   const improved=maxImp!==null?hcpChanges.filter(x=>x.change===maxImp):[];
   const dropped =maxWor!==null?hcpChanges.filter(x=>x.change===maxWor):[];
-  let ctpA=0,ctpB=0;
-  ACHIEVEMENTS.filter(a=>a.cat==="Closest to the Pin").forEach(a=>{
-    const r=RESULTS.find(r=>r.player===a.player&&r.tid===a.tid);
-    if(r?.flight==="A")ctpA++;else if(r?.flight==="B")ctpB++;
-  });
-  const cMap={};
-  RESULTS.forEach(r=>{const t=TOURNAMENTS.find(t=>t.id===r.tid);if(!t)return;cMap[t.name]=cMap[t.name]||{sum:0,c:0};cMap[t.name].sum+=r.gross;cMap[t.name].c++;});
+  let ctpA=0,ctpB=0;ACHIEVEMENTS.filter(a=>a.cat==="Closest to the Pin").forEach(a=>{const r=RESULTS.find(r=>r.player===a.player&&r.tid===a.tid);if(r?.flight==="A")ctpA++;else if(r?.flight==="B")ctpB++;});
+  const cMap={};RESULTS.forEach(r=>{const t=TOURNAMENTS.find(t=>t.id===r.tid);if(!t)return;cMap[t.name]=cMap[t.name]||{sum:0,c:0};cMap[t.name].sum+=r.gross;cMap[t.name].c++;});
   const hardest=Object.entries(cMap).map(([c,v])=>({c,avg:v.sum/v.c})).sort((a,b)=>b.avg-a.avg)[0];
   const medA=median(RESULTS.filter(r=>r.flight==="A").map(r=>r.net));
   const medB=median(RESULTS.filter(r=>r.flight==="B").map(r=>r.net));
   el("insight-grid").innerHTML=[
     {icon:"&#129442;",lbl:"&#129442; Donkey Score (Season High Gross)",name:highG?`${highG.player} &#8212; ${highG.gross}`:"&#8212;",val:highG?tName(highG.tid):""},
-    {icon:"&#128201;",lbl:"Season Low Gross",                          name:lowG?`${lowG.player} &#8212; ${lowG.gross}`:"&#8212;",val:lowG?tName(lowG.tid):""},
-    {icon:"&#127921;",lbl:"Lowest Single-Round Putts",                 name:lowP?`${lowP.player} &#8212; ${lowP.putts}`:"&#8212;",val:lowP?tName(lowP.tid):"(Putts TBD for early rounds)"},
-    {icon:"&#128197;",lbl:"Most Tournaments Attended",name:attTied.length===1?attTied[0]:`${attTied.length} Tied`,val:`${maxAtt} Tournament${maxAtt!==1?"s":""}${attTied.length>1?" &#8212; "+attTied.slice(0,4).join(", ")+(attTied.length>4?"…":""):""}`,split:attTied.length>1},
+    {icon:"&#128201;",lbl:"Season Low Gross",name:lowG?`${lowG.player} &#8212; ${lowG.gross}`:"&#8212;",val:lowG?tName(lowG.tid):""},
+    {icon:"&#127921;",lbl:"Lowest Single-Round Putts",name:lowP?`${lowP.player} &#8212; ${lowP.putts}`:"&#8212;",val:lowP?tName(lowP.tid):"(Putts TBD for early rounds)"},
+    {icon:"&#128197;",lbl:"Most Tournaments Attended",name:attTied.length===1?attTied[0]:`${attTied.length} Tied`,val:`${maxAtt} Tournament${maxAtt!==1?"s":""}${attTied.length>1?" &#8212; "+attTied.slice(0,4).join(", ")+(attTied.length>4?"&#8230;":""):""}`,split:attTied.length>1},
     {icon:"&#128200;",lbl:"Most Improved HCP",name:improved.length?improved.map(x=>x.player).join(" &amp; "):"&#8212;",val:improved.length?`<span class="trend-dn">&#9660;${Math.abs(maxImp)} strokes</span>`:"&#8212;"},
     {icon:"&#128201;",lbl:"Biggest HCP Increase",name:dropped.length?dropped.map(x=>x.player).join(" &amp; "):"&#8212;",val:dropped.length?`<span class="trend-up">&#9650;${Math.abs(maxWor)} strokes</span>`:"&#8212;"},
     {icon:"&#127963;",lbl:"Highest Avg Gross Course",name:hardest?hardest.c:"&#8212;",val:hardest?`Avg ${hardest.avg.toFixed(1)} gross`:""},
@@ -803,120 +817,78 @@ function renderInsights(){
 // ═══════════════════════════════════════════════════════════════
 function renderLB(flight,tbodyId){
   const key=`Flight ${flight} - Overall`,m={};
-  ACHIEVEMENTS.filter(a=>a.cat===key).forEach(a=>{
-    m[a.player]=m[a.player]||{p:a.player,w1:0,w2:0,w3:0};
-    if(a.pl==="1")m[a.player].w1++;else if(a.pl==="2")m[a.player].w2++;else if(a.pl==="3")m[a.player].w3++;
-  });
+  ACHIEVEMENTS.filter(a=>a.cat===key).forEach(a=>{m[a.player]=m[a.player]||{p:a.player,w1:0,w2:0,w3:0};if(a.pl==="1")m[a.player].w1++;else if(a.pl==="2")m[a.player].w2++;else if(a.pl==="3")m[a.player].w3++;});
   const sorted=Object.values(m).sort((a,b)=>b.w1-a.w1||b.w2-a.w2||b.w3-a.w3);
-  const tiers=[];let i=0;
-  while(i<sorted.length){const ref=sorted[i],g=[];while(i<sorted.length&&sorted[i].w1===ref.w1&&sorted[i].w2===ref.w2&&sorted[i].w3===ref.w3)g.push(sorted[i++]);g.sort((a,b)=>guestLast({player:a.p},{player:b.p}));tiers.push(g);}
-  const body=el(tbodyId);
-  if(!tiers.length){body.innerHTML=`<tr class="empty"><td colspan="5">No data yet</td></tr>`;return;}
+  const tiers=[];let i=0;while(i<sorted.length){const ref=sorted[i],g=[];while(i<sorted.length&&sorted[i].w1===ref.w1&&sorted[i].w2===ref.w2&&sorted[i].w3===ref.w3)g.push(sorted[i++]);g.sort((a,b)=>guestLast({player:a.p},{player:b.p}));tiers.push(g);}
+  const body=el(tbodyId);if(!tiers.length){body.innerHTML=`<tr class="empty"><td colspan="5">No data yet</td></tr>`;return;}
   let rank=1;
-  body.innerHTML=tiers.map(group=>{
-    const r=group[0];
-    const pCell=group.length===1?r.p+gtag(r.p):`<strong>${group.length} Tied</strong><span class="tied-names">${group.map(x=>x.p+gtag(x.p)).join(" &nbsp;&bull;&nbsp; ")}</span>`;
-    const row=`<tr><td>${rb(rank)}</td><td>${pCell}</td><td class="tc">${r.w1||"&#8212;"}</td><td class="tc">${r.w2||"&#8212;"}</td><td class="tc">${r.w3||"&#8212;"}</td></tr>`;
-    rank+=group.length;return row;
-  }).join("");
+  body.innerHTML=tiers.map(group=>{const r=group[0];const pCell=group.length===1?r.p+gtag(r.p):`<strong>${group.length} Tied</strong><span class="tied-names">${group.map(x=>x.p+gtag(x.p)).join(" &nbsp;&bull;&nbsp; ")}</span>`;const row=`<tr><td>${rb(rank)}</td><td>${pCell}</td><td class="tc">${r.w1||"&#8212;"}</td><td class="tc">${r.w2||"&#8212;"}</td><td class="tc">${r.w3||"&#8212;"}</td></tr>`;rank+=group.length;return row;}).join("");
 }
 
 // ═══════════════════════════════════════════════════════════════
-// MONEY LIST — Top 10 / All toggle, members only
+// MONEY LIST
 // ═══════════════════════════════════════════════════════════════
 function renderMoney(){
-  const achMap={};
-  ACHIEVEMENTS.filter(a=>!isGuest(a.player)).forEach(a=>{achMap[a.player]=(achMap[a.player]||0)+a.amt;});
+  const achMap={};ACHIEVEMENTS.filter(a=>!isGuest(a.player)).forEach(a=>{achMap[a.player]=(achMap[a.player]||0)+a.amt;});
   const limit=el("money-limit").value;
   let rows=Object.entries(achMap).map(([p,t])=>({player:p,total:t})).sort((a,b)=>b.total-a.total);
   if(limit!=="all")rows=rows.slice(0,parseInt(limit));
-  const isSorted=SORT.money.col!==null;
   rows=applySort(rows,"money");
   el("money-body").innerHTML=rows.map((r,i)=>`<tr><td>${rb(i+1)}</td><td><strong>${r.player}</strong></td><td class="tr amt"><strong>${fmt$(r.total)}</strong></td></tr>`).join("");
   updateSortHdrs("tbl-money","money");
 }
 
 // ═══════════════════════════════════════════════════════════════
-// ACHIEVEMENTS — grouped, default latest, All available
+// ACHIEVEMENTS
 // ═══════════════════════════════════════════════════════════════
 function populateAchFilters(){
-  const allOpt=document.createElement("option");allOpt.value="";allOpt.textContent="All Tournaments";
-  el("ach-t").appendChild(allOpt);
-  [...new Set(ACHIEVEMENTS.map(a=>a.tid))].sort().reverse().forEach(t=>{
-    const o=document.createElement("option");o.value=t;o.textContent=tName(t);el("ach-t").appendChild(o);
-  });
+  const allOpt=document.createElement("option");allOpt.value="";allOpt.textContent="All Tournaments";el("ach-t").appendChild(allOpt);
+  [...new Set(ACHIEVEMENTS.map(a=>a.tid))].sort().reverse().forEach(t=>{const o=document.createElement("option");o.value=t;o.textContent=tName(t);el("ach-t").appendChild(o);});
   el("ach-t").value=MOST_RECENT_TID;
   [...new Set(ACHIEVEMENTS.map(a=>a.player))].sort().forEach(p=>{const o=document.createElement("option");o.value=p;o.textContent=p;el("ach-p").appendChild(o);});
 }
-
 function renderAchCat(cat,tbodyId){
   const tf=el("ach-t").value,pf=el("ach-p").value;
   let rows=ACHIEVEMENTS.filter(a=>a.cat===cat&&(!tf||a.tid===tf)&&(!pf||a.player===pf));
   rows.sort((a,b)=>plOrder(a.pl)-plOrder(b.pl)||guestLast(a,b));
-  el(tbodyId).innerHTML=!rows.length
-    ?`<tr class="empty"><td colspan="3">No data for current filters</td></tr>`
-    :rows.map(a=>{
-      let ph=a.player+gtag(a.player);
-      if(cat==="Closest to the Pin"){const r=RESULTS.find(r=>r.player===a.player&&r.tid===a.tid);if(r)ph+=`<span class="flight-tag">(Flight ${r.flight})</span>`;}
-      return`<tr><td class="tc">${pill(a.pl)}</td><td>${ph}</td><td class="tr amt">${fmt$(a.amt)}</td></tr>`;
-    }).join("");
+  el(tbodyId).innerHTML=!rows.length?`<tr class="empty"><td colspan="3">No data for current filters</td></tr>`:rows.map(a=>{let ph=a.player+gtag(a.player);if(cat==="Closest to the Pin"){const r=RESULTS.find(r=>r.player===a.player&&r.tid===a.tid);if(r)ph+=`<span class="flight-tag">(Flight ${r.flight})</span>`;}return`<tr><td class="tc">${pill(a.pl)}</td><td>${ph}</td><td class="tr amt">${fmt$(a.amt)}</td></tr>`;}).join("");
 }
-
 function renderHighGross(){
   const tf=el("ach-t").value;
   const tids=tf?[tf]:[...new Set(RESULTS.map(r=>r.tid))].sort().reverse();
   ["A","B"].forEach(fl=>{
-    const rows=tids.map(tid=>{
-      const frs=RESULTS.filter(r=>r.tid===tid&&r.flight===fl);
-      if(!frs.length)return null;
-      return{tid,player:frs.reduce((mx,r)=>r.gross>mx.gross?r:mx).player,gross:frs.reduce((mx,r)=>r.gross>mx.gross?r:mx).gross};
-    }).filter(Boolean);
-    el(fl==="A"?"ac-hga":"ac-hgb").innerHTML=!rows.length
-      ?`<tr class="empty"><td colspan="3">No data</td></tr>`
-      :rows.map(r=>`<tr><td>${tName(r.tid)}</td><td>${r.player}${gtag(r.player)}</td><td class="tc"><strong>${r.gross}</strong></td></tr>`).join("");
+    const rows=tids.map(tid=>{const frs=RESULTS.filter(r=>r.tid===tid&&r.flight===fl);if(!frs.length)return null;const top=frs.reduce((mx,r)=>r.gross>mx.gross?r:mx);return{tid,player:top.player,gross:top.gross};}).filter(Boolean);
+    el(fl==="A"?"ac-hga":"ac-hgb").innerHTML=!rows.length?`<tr class="empty"><td colspan="3">No data</td></tr>`:rows.map(r=>`<tr><td>${tName(r.tid)}</td><td>${r.player}${gtag(r.player)}</td><td class="tc"><strong>${r.gross}</strong></td></tr>`).join("");
   });
 }
-
 function renderAllAch(){
-  ["Flight A - Overall","ac-aov","Flight B - Overall","ac-bov",
-   "Flight A - Front 9","ac-af9","Flight B - Front 9","ac-bf9",
-   "Flight A - Back 9","ac-ab9","Flight B - Back 9","ac-bb9",
-   "Flight A - Long Drive","ac-ald","Flight B - Long Drive","ac-bld",
-   "Low Putts","ac-lp","Closest to the Pin","ac-kp"
-  ].reduce((acc,v,i)=>i%2===0?[...acc,[v]]:[...acc.slice(0,-1),[...acc[acc.length-1],v]],[])
-  .forEach(([cat,id])=>renderAchCat(cat,id));
+  [["Flight A - Overall","ac-aov"],["Flight B - Overall","ac-bov"],["Flight A - Front 9","ac-af9"],["Flight B - Front 9","ac-bf9"],["Flight A - Back 9","ac-ab9"],["Flight B - Back 9","ac-bb9"],["Flight A - Long Drive","ac-ald"],["Flight B - Long Drive","ac-bld"],["Low Putts","ac-lp"],["Closest to the Pin","ac-kp"]].forEach(([cat,id])=>renderAchCat(cat,id));
   renderHighGross();
 }
 
 // ═══════════════════════════════════════════════════════════════
-// SKINS — default latest, All available
+// SKINS
 // ═══════════════════════════════════════════════════════════════
 function populateSkinsFilters(){
-  const ph=document.createElement("option");ph.value="";ph.textContent="-- Select Tournament --";
-  el("sf-t").appendChild(ph);
-  const all=document.createElement("option");all.value="all";all.textContent="All Tournaments";
-  el("sf-t").appendChild(all);
+  const ph=document.createElement("option");ph.value="";ph.textContent="-- Select Tournament --";el("sf-t").appendChild(ph);
+  const all=document.createElement("option");all.value="all";all.textContent="All Tournaments";el("sf-t").appendChild(all);
   [...new Set(SKINS.map(s=>s.tid))].sort().reverse().forEach(t=>{const o=document.createElement("option");o.value=t;o.textContent=tName(t);el("sf-t").appendChild(o);});
   el("sf-t").value=MOST_RECENT_TID;
   [...new Set(SKINS.map(s=>s.player))].sort().forEach(p=>{const o=document.createElement("option");o.value=p;o.textContent=p;el("sf-p").appendChild(o);});
   [...new Set(SKINS.map(s=>s.cat))].sort().forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;el("sf-c").appendChild(o);});
 }
-
 function renderSkins(){
   const tf=el("sf-t").value;
   if(!tf){el("skins-body").innerHTML=`<tr class="collapse-msg"><td colspan="5"><span>&#127919;</span>Select a tournament to view skins results</td></tr>`;return;}
   const pf=el("sf-p").value,cf=el("sf-c").value;
   let rows=SKINS.filter(s=>(tf==="all"||s.tid===tf)&&(!pf||s.player===pf)&&(!cf||s.cat===cf));
-  if(!SORT.skins.col)rows=[...rows].sort((a,b)=>b.total-a.total);
-  else rows=applySort(rows,"skins");
-  el("skins-body").innerHTML=!rows.length
-    ?`<tr class="empty"><td colspan="5">No results match filters</td></tr>`
-    :rows.map(s=>`<tr><td>${tName(s.tid)}</td><td>${s.player}${gtag(s.player)}</td><td>${s.cat}</td><td class="tc"><strong>${s.total}</strong></td><td class="tr amt">${fmt$(s.amt)}</td></tr>`).join("");
+  if(!SORT.skins.col)rows=[...rows].sort((a,b)=>b.total-a.total);else rows=applySort(rows,"skins");
+  el("skins-body").innerHTML=!rows.length?`<tr class="empty"><td colspan="5">No results match filters</td></tr>`:rows.map(s=>`<tr><td>${tName(s.tid)}</td><td>${s.player}${gtag(s.player)}</td><td>${s.cat}</td><td class="tc"><strong>${s.total}</strong></td><td class="tr amt">${fmt$(s.amt)}</td></tr>`).join("");
   updateSortHdrs("tbl-skins","skins");
 }
 
 // ═══════════════════════════════════════════════════════════════
-// RESULTS — default latest, All available, gold on low net
+// RESULTS
 // ═══════════════════════════════════════════════════════════════
 function populateResultsFilters(){
   const ph=document.createElement("option");ph.value="";ph.textContent="-- Select Tournament --";el("rf-t").appendChild(ph);
@@ -924,36 +896,21 @@ function populateResultsFilters(){
   [...new Set(RESULTS.map(r=>r.tid))].sort().reverse().forEach(t=>{const o=document.createElement("option");o.value=t;o.textContent=tName(t);el("rf-t").appendChild(o);});
   el("rf-t").value=MOST_RECENT_TID;
 }
-
 function renderResults(){
   const tf=el("rf-t").value;
   if(!tf){el("res-body").innerHTML=`<tr class="collapse-msg"><td colspan="8"><span>&#128203;</span>Select a tournament to view scorecard results</td></tr>`;return;}
   const ff=el("rf-f").value;
   let rows=RESULTS.filter(r=>(tf==="all"||r.tid===tf)&&(!ff||r.flight===ff));
   const isSorted=SORT.results.col!==null;
-  if(!isSorted)rows=[...rows].sort((a,b)=>a.flight<b.flight?-1:a.flight>b.flight?1:a.net-b.net);
-  else rows=applySort(rows,"results");
+  if(!isSorted)rows=[...rows].sort((a,b)=>a.flight<b.flight?-1:a.flight>b.flight?1:a.net-b.net);else rows=applySort(rows,"results");
   const bestA=Math.min(...rows.filter(r=>r.flight==="A").map(r=>r.net).filter(isFinite));
   const bestB=Math.min(...rows.filter(r=>r.flight==="B").map(r=>r.net).filter(isFinite));
-  el("res-body").innerHTML=!rows.length
-    ?`<tr class="empty"><td colspan="8">No results match filters</td></tr>`
-    :rows.map(r=>{
-      const winner=!isSorted&&((r.flight==="A"&&r.net===bestA)||(r.flight==="B"&&r.net===bestB));
-      const puttsDisplay=r.putts!==null?r.putts:"&#8212;";
-      return`<tr class="${winner?"r1-result":""}">
-        <td>${r.player}${gtag(r.player)}</td>
-        <td class="tc"><span class="fbadge${r.flight==="B"?" b-b":""}" style="font-size:.6rem;padding:2px 7px;">${r.flight}</span></td>
-        <td class="tc">${r.hcp}</td><td class="tc">${r.gross}</td>
-        <td class="tc"><strong>${r.net}</strong></td>
-        <td class="tc">${r.f9}</td><td class="tc">${r.b9}</td>
-        <td class="tc">${puttsDisplay}</td>
-      </tr>`;
-    }).join("");
+  el("res-body").innerHTML=!rows.length?`<tr class="empty"><td colspan="8">No results match filters</td></tr>`:rows.map(r=>{const winner=!isSorted&&((r.flight==="A"&&r.net===bestA)||(r.flight==="B"&&r.net===bestB));return`<tr class="${winner?"r1-result":""}"><td>${r.player}${gtag(r.player)}</td><td class="tc"><span class="fbadge${r.flight==="B"?" b-b":""}" style="font-size:.6rem;padding:2px 7px;">${r.flight}</span></td><td class="tc">${r.hcp}</td><td class="tc">${r.gross}</td><td class="tc"><strong>${r.net}</strong></td><td class="tc">${r.f9}</td><td class="tc">${r.b9}</td><td class="tc">${r.putts!==null?r.putts:"&#8212;"}</td></tr>`;}).join("");
   updateSortHdrs("tbl-results","results");
 }
 
 // ═══════════════════════════════════════════════════════════════
-// PLAYER SCORING TAB
+// PLAYER SCORING
 // ═══════════════════════════════════════════════════════════════
 function populatePSFilters(){
   [...new Set(RESULTS.map(r=>r.tid))].sort().reverse().forEach(t=>{const o=document.createElement("option");o.value=t;o.textContent=tName(t);el("ps-t").appendChild(o);});
@@ -962,20 +919,8 @@ function populatePSFilters(){
 function renderPlayerScoring(){
   const tf=el("ps-t").value,pf=el("ps-p").value;
   let rows=RESULTS.filter(r=>(!tf||r.tid===tf)&&(!pf||r.player===pf));
-  if(!SORT.ps.col)rows=[...rows].sort((a,b)=>a.player.localeCompare(b.player)||a.tid.localeCompare(b.tid));
-  else rows=applySort(rows,"ps");
-  el("ps-body").innerHTML=!rows.length
-    ?`<tr class="empty"><td colspan="9">No results match filters</td></tr>`
-    :rows.map(r=>`<tr>
-        <td>${r.player}${gtag(r.player)}</td>
-        <td>${tName(r.tid)}</td>
-        <td class="tc"><span class="fbadge${r.flight==="B"?" b-b":""}" style="font-size:.6rem;padding:2px 7px;">${r.flight}</span></td>
-        <td class="tc">${r.hcp}</td>
-        <td class="tc">${r.gross}</td>
-        <td class="tc"><strong>${r.net}</strong></td>
-        <td class="tc">${r.f9}</td><td class="tc">${r.b9}</td>
-        <td class="tc">${r.putts!==null?r.putts:"&#8212;"}</td>
-      </tr>`).join("");
+  if(!SORT.ps.col)rows=[...rows].sort((a,b)=>a.player.localeCompare(b.player)||a.tid.localeCompare(b.tid));else rows=applySort(rows,"ps");
+  el("ps-body").innerHTML=!rows.length?`<tr class="empty"><td colspan="9">No results match filters</td></tr>`:rows.map(r=>`<tr><td>${r.player}${gtag(r.player)}</td><td>${tName(r.tid)}</td><td class="tc"><span class="fbadge${r.flight==="B"?" b-b":""}" style="font-size:.6rem;padding:2px 7px;">${r.flight}</span></td><td class="tc">${r.hcp}</td><td class="tc">${r.gross}</td><td class="tc"><strong>${r.net}</strong></td><td class="tc">${r.f9}</td><td class="tc">${r.b9}</td><td class="tc">${r.putts!==null?r.putts:"&#8212;"}</td></tr>`).join("");
   updateSortHdrs("tbl-ps","ps");
 }
 
@@ -983,15 +928,13 @@ function renderPlayerScoring(){
 // INIT
 // ═══════════════════════════════════════════════════════════════
 document.addEventListener("DOMContentLoaded",()=>{
-  renderHeader();
-  renderKPIs();
-  renderLB("A","lb-a");
-  renderLB("B","lb-b");
+  renderHeader();renderKPIs();
+  renderLB("A","lb-a");renderLB("B","lb-b");
   renderMoney();
-  populateAchFilters();  renderAllAch();
-  populateSkinsFilters(); renderSkins();
-  populateResultsFilters(); renderResults();
-  populatePSFilters(); renderPlayerScoring();
+  populateAchFilters();renderAllAch();
+  populateSkinsFilters();renderSkins();
+  populateResultsFilters();renderResults();
+  populatePSFilters();renderPlayerScoring();
   bindSort();
 });
 </script>
