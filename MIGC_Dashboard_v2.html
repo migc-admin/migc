@@ -856,6 +856,12 @@ footer{text-align:center;padding:22px;color:var(--muted);font-size:.75rem;border
           <option value="2025">2025</option>
         </select>
       </div>
+      <div class="filter-group">
+        Player
+        <select id="hist-kpi-player-filter" onchange="renderHistKPIs()">
+          <option value="all">All Players</option>
+        </select>
+      </div>
     </div>
 
     <div class="kpi-grid" id="hist-kpi-grid"></div>
@@ -911,7 +917,7 @@ const HIST_TOURNAMENTS = [{"tournament_id": "2021_01", "year": "2021", "number":
 // Known guests (from project instructions + historical data)
 const HIST_GUESTS = new Set([
   'Mat Vigil','Jeff Carey','Jason Payton','Med Baheta','Lucas Bouloy',
-  'Shirley Ng','Brian Anderson','Dan Ko','Gary Ryback','Tak Shishido',
+  'Brian Anderson','Gary Ryback',
   'Young Park','Ryo Higurashi','Ted Setvanpour','Gary Molina','Robert Siemienczuk',
   'Charles Figueroa'
 ]);
@@ -1045,9 +1051,14 @@ function renderLeaderboards() {
 // RENDER KPIs
 // ══════════════════════════════════════════
 function renderHistKPIs() {
-  const year = document.getElementById('hist-kpi-year-filter').value;
-  const rows = filterMain(year, 'all');
-  const skinRows = filterSkins(year, 'all');
+  const year   = document.getElementById('hist-kpi-year-filter').value;
+  const player = document.getElementById('hist-kpi-player-filter').value;
+  let rows     = filterMain(year, 'all');
+  let skinRows = filterSkins(year, 'all');
+  if (player !== 'all') {
+    rows     = rows.filter(r=>r.player===player);
+    skinRows = skinRows.filter(r=>r.player===player);
+  }
 
   const agg = (filterFn, valueFn) => {
     const m = {};
@@ -1067,62 +1078,48 @@ function renderHistKPIs() {
 
   const kpis = [
     {
-      icon: '🏆', title: 'Most Overall Wins',
-      data: agg(r=>r.category.includes('Overall')&&r.placement==='1', _=>1),
-      fmt: v=>`${v} win${v!==1?'s':''}`
-    },
-    {
-      icon: '📍', title: 'Most Greenies (CTP)',
-      data: agg(r=>r.category==='Closest to the Pin', _=>1),
-      fmt: v=>`${v} win${v!==1?'s':''}`
-    },
-    {
-      icon: '🎱', title: 'Most Low Putts Wins',
-      data: agg(r=>r.category==='Low Putts', _=>1),
-      fmt: v=>`${v} win${v!==1?'s':''}`
-    },
-    {
-      icon: '💨', title: 'Most Long Drive Wins',
-      data: agg(r=>r.category.includes('Long Drive'), _=>1),
-      fmt: v=>`${v} win${v!==1?'s':''}`
-    },
-    {
-      icon: '💰', title: 'Most Money Won (Non-Skins)',
+      icon: '&#128176;', title: 'Most Money Won (Non-Skins)',
       data: agg(_=>true, r=>r.payout),
       fmt: v=>fmt(v)
     },
     {
-      icon: '🃏', title: 'Most Skins Won',
-      data: skinAgg(r=>r.skins),
-      fmt: v=>`${v} skin${v!==1?'s':''}`
-    },
-    {
-      icon: '💵', title: 'Most Skins Money',
+      icon: '&#128181;', title: 'Most Skins Money',
       data: skinAgg(r=>r.payout),
       fmt: v=>fmt(v)
     },
     {
-      icon: '📅', title: 'Most Tournaments Attended',
-      data: (() => {
-        const m = {};
-        rows.forEach(r => {
-          if (!m[r.player]) m[r.player] = new Set();
-          m[r.player].add(r.tournament_id);
-        });
-        return Object.entries(m)
-          .map(([p,s])=>[p,s.size])
-          .sort((a,b)=>b[1]-a[1]).slice(0,5);
-      })(),
-      fmt: v=>`${v} event${v!==1?'s':''}`
-    }
+      icon: '&#127942;', title: 'Most Overall Wins',
+      data: agg(r=>r.category.includes('Overall')&&r.placement==='1', _=>1),
+      fmt: v=>`${v} win${v!==1?'s':''}`
+    },
+    {
+      icon: '&#127183;', title: 'Most Skins Won',
+      data: skinAgg(r=>r.skins),
+      fmt: v=>`${v} skin${v!==1?'s':''}`
+    },
+    {
+      icon: '&#128205;', title: 'Most Greenies (CTP)',
+      data: agg(r=>r.category==='Closest to the Pin', _=>1),
+      fmt: v=>`${v} win${v!==1?'s':''}`
+    },
+    {
+      icon: '&#127921;', title: 'Most Low Putts Wins',
+      data: agg(r=>r.category==='Low Putts', _=>1),
+      fmt: v=>`${v} win${v!==1?'s':''}`
+    },
+    {
+      icon: '&#128168;', title: 'Most Long Drive Wins',
+      data: agg(r=>r.category.includes('Long Drive'), _=>1),
+      fmt: v=>`${v} win${v!==1?'s':''}`
+    },
   ];
 
-  const grid = document.getElementById('kpi-grid');
+  const grid = document.getElementById('hist-kpi-grid');
   grid.innerHTML = kpis.map(k => {
     const rows_html = k.data.length
       ? k.data.map(([player,val],i) => `
           <div class="kpi-row ${i===0?'rank-1-row':''}">
-            <div class="kpi-rank">${i===1?'2':i===2?'3':i===3?'4':i===4?'5':i===0?'1':''}</div>
+            <div class="kpi-rank">${i+1}</div>
             <div class="kpi-player">${player}${guestBadge(player)}</div>
             <div class="kpi-val">${k.fmt(val)}</div>
           </div>`).join('')
@@ -1458,10 +1455,26 @@ function renderLeaderboards() {
 // ══════════════════════════════════════════
 // RENDER KPIs
 // ══════════════════════════════════════════
+function populateHistKpiPlayerFilter() {
+  const sel = document.getElementById('hist-kpi-player-filter');
+  const cur = sel.value;
+  const allPlayers = [...new Set([
+    ...MAIN.map(r=>r.player),
+    ...HIST_SKINS.map(r=>r.player)
+  ])].sort();
+  sel.innerHTML = '<option value="all">All Players</option>' +
+    allPlayers.map(p=>`<option value="${p}"${p===cur?' selected':''}>${p}</option>`).join('');
+}
+
 function renderHistKPIs() {
-  const year = document.getElementById('hist-kpi-year-filter').value;
-  const rows = filterMain(year, 'all');
-  const skinRows = filterSkins(year, 'all');
+  const year   = document.getElementById('hist-kpi-year-filter').value;
+  const player = document.getElementById('hist-kpi-player-filter').value;
+  let rows     = filterMain(year, 'all');
+  let skinRows = filterSkins(year, 'all');
+  if (player !== 'all') {
+    rows     = rows.filter(r=>r.player===player);
+    skinRows = skinRows.filter(r=>r.player===player);
+  }
 
   const agg = (filterFn, valueFn) => {
     const m = {};
@@ -1481,9 +1494,24 @@ function renderHistKPIs() {
 
   const kpis = [
     {
+      icon: '💰', title: 'Most Money Won (Non-Skins)',
+      data: agg(_=>true, r=>r.payout),
+      fmt: v=>fmt(v)
+    },
+    {
+      icon: '💵', title: 'Most Skins Money',
+      data: skinAgg(r=>r.payout),
+      fmt: v=>fmt(v)
+    },
+    {
       icon: '🏆', title: 'Most Overall Wins',
       data: agg(r=>r.category.includes('Overall')&&r.placement==='1', _=>1),
       fmt: v=>`${v} win${v!==1?'s':''}`
+    },
+    {
+      icon: '🃏', title: 'Most Skins Won',
+      data: skinAgg(r=>r.skins),
+      fmt: v=>`${v} skin${v!==1?'s':''}`
     },
     {
       icon: '📍', title: 'Most Greenies (CTP)',
@@ -1500,35 +1528,6 @@ function renderHistKPIs() {
       data: agg(r=>r.category.includes('Long Drive'), _=>1),
       fmt: v=>`${v} win${v!==1?'s':''}`
     },
-    {
-      icon: '💰', title: 'Most Money Won (Non-Skins)',
-      data: agg(_=>true, r=>r.payout),
-      fmt: v=>fmt(v)
-    },
-    {
-      icon: '🃏', title: 'Most Skins Won',
-      data: skinAgg(r=>r.skins),
-      fmt: v=>`${v} skin${v!==1?'s':''}`
-    },
-    {
-      icon: '💵', title: 'Most Skins Money',
-      data: skinAgg(r=>r.payout),
-      fmt: v=>fmt(v)
-    },
-    {
-      icon: '📅', title: 'Most Tournaments Attended',
-      data: (() => {
-        const m = {};
-        rows.forEach(r => {
-          if (!m[r.player]) m[r.player] = new Set();
-          m[r.player].add(r.tournament_id);
-        });
-        return Object.entries(m)
-          .map(([p,s])=>[p,s.size])
-          .sort((a,b)=>b[1]-a[1]).slice(0,5);
-      })(),
-      fmt: v=>`${v} event${v!==1?'s':''}`
-    }
   ];
 
   const grid = document.getElementById('hist-kpi-grid');
@@ -2246,7 +2245,7 @@ function switchTab(name){
   el('tab-'+name).classList.add('active');el('btn-'+name).classList.add('active');
   if(name==='tgl')renderTGLPage();
   if(name==='insights')renderInsights();
-  if(name==='history'){populateHistLbPlayerFilter();populateLbTournFilter();renderLeaderboards();renderHistKPIs();}
+  if(name==='history'){populateHistLbPlayerFilter();populateLbTournFilter();populateHistKpiPlayerFilter();renderLeaderboards();renderHistKPIs();}
 }
 
 function gotoAch(tid){
